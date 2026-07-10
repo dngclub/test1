@@ -1,0 +1,167 @@
+{
+  "schema_version": "1.0",
+  "menu_code": "M000000005",
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/api/purchase",
+      "summary": "구매 내역 목록 조회",
+      "auth": "user",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "startDate": {
+            "type": "string"
+          },
+          "endDate": {
+            "type": "string"
+          },
+          "custCd": {
+            "type": "string"
+          },
+          "itemCd": {
+            "type": "string"
+          }
+        }
+      },
+      "response_schema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/Polist"
+        }
+      },
+      "domain_events": [],
+      "kic_refs": []
+    },
+    {
+      "method": "POST",
+      "path": "/api/purchase",
+      "summary": "구매 내역 신규 등록",
+      "auth": "user",
+      "request_schema": {
+        "type": "object",
+        "required": [
+          "podate",
+          "custcd",
+          "itemcd",
+          "qty"
+        ],
+        "properties": {
+          "podate": {
+            "type": "string"
+          },
+          "custcd": {
+            "type": "string"
+          },
+          "itemcd": {
+            "type": "string"
+          },
+          "qty": {
+            "type": "integer"
+          }
+        }
+      },
+      "response_schema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "pono": {
+            "type": "string"
+          }
+        }
+      },
+      "domain_events": [
+        "PurchaseCreated"
+      ],
+      "kic_refs": []
+    },
+    {
+      "method": "PUT",
+      "path": "/api/purchase/{pono}",
+      "summary": "구매 내역 수정",
+      "auth": "user",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "podate": {
+            "type": "string"
+          },
+          "custcd": {
+            "type": "string"
+          },
+          "itemcd": {
+            "type": "string"
+          },
+          "qty": {
+            "type": "integer"
+          }
+        }
+      },
+      "response_schema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "domain_events": [
+        "PurchaseUpdated"
+      ],
+      "kic_refs": []
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/purchase/{pono}",
+      "summary": "구매 내역 삭제",
+      "auth": "user",
+      "request_schema": {},
+      "response_schema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          }
+        }
+      },
+      "domain_events": [
+        "PurchaseDeleted"
+      ],
+      "kic_refs": []
+    },
+    {
+      "method": "GET",
+      "path": "/api/master/customers",
+      "summary": "거래처 목록 조회",
+      "auth": "user",
+      "request_schema": {},
+      "response_schema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/Custmaster"
+        }
+      },
+      "domain_events": [],
+      "kic_refs": []
+    },
+    {
+      "method": "GET",
+      "path": "/api/master/items",
+      "summary": "품목 목록 조회",
+      "auth": "user",
+      "request_schema": {},
+      "response_schema": {
+        "type": "array",
+        "items": {
+          "$ref": "#/definitions/Itemmaster"
+        }
+      },
+      "domain_events": [],
+      "kic_refs": []
+    }
+  ],
+  "compiled_at": "2026-07-10T01:27:15.351492+00:00",
+  "kic_refs": []
+}

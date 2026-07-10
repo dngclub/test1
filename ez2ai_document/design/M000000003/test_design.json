@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "menu_code": "M000000003",
+  "scenarios": [
+    {
+      "id": "T001",
+      "title": "품목 목록 조회 및 검색",
+      "type": "e2e",
+      "given": "품목관리 페이지에 접속한 상태",
+      "when": "검색어 입력창에 품목명 또는 바코드를 입력하고 검색 버튼을 클릭하면",
+      "then": "조건에 일치하는 품목 리스트가 조회 결과 영역에 표시된다",
+      "related_endpoints": [
+        "GET /api/items"
+      ],
+      "related_components": [
+        "ItemManagePage",
+        "SearchBar",
+        "ItemGrid"
+      ],
+      "kic_refs": []
+    },
+    {
+      "id": "T002",
+      "title": "품목 신규 등록 성공",
+      "type": "e2e",
+      "given": "신규 등록 폼이 열려 있는 상태",
+      "when": "필수 항목인 품목코드와 품목명을 입력하고 저장 버튼을 클릭하면",
+      "then": "데이터베이스에 품목 정보가 저장되고 리스트가 갱신된다",
+      "related_endpoints": [
+        "POST /api/items"
+      ],
+      "related_components": [
+        "ItemManagePage",
+        "ItemFormModal"
+      ],
+      "kic_refs": []
+    },
+    {
+      "id": "T003",
+      "title": "품목 신규 등록 시 중복 코드 방지",
+      "type": "integration",
+      "given": "이미 존재하는 품목코드가 데이터베이스에 있는 상태",
+      "when": "동일한 품목코드로 신규 등록을 시도하면",
+      "then": "이미 존재하는 품목코드라는 에러 메시지가 출력된다",
+      "related_endpoints": [
+        "POST /api/items"
+      ],
+      "related_components": [
+        "ItemFormModal"
+      ],
+      "kic_refs": []
+    },
+    {
+      "id": "T004",
+      "title": "품목 정보 수정",
+      "type": "e2e",
+      "given": "조회된 품목 리스트 중 특정 행을 선택한 상태",
+      "when": "폼에 로드된 정보를 수정하고 저장 버튼을 클릭하면",
+      "then": "수정된 정보가 데이터베이스에 반영된다",
+      "related_endpoints": [
+        "PUT /api/items/{id}"
+      ],
+      "related_components": [
+        "ItemManagePage",
+        "ItemGrid",
+        "ItemFormModal"
+      ],
+      "kic_refs": []
+    },
+    {
+      "id": "T005",
+      "title": "품목 삭제 제한 (참조 무결성)",
+      "type": "integration",
+      "given": "구매관리(polist)에서 사용 중인 품목을 선택한 상태",
+      "when": "삭제 버튼을 클릭하면",
+      "then": "참조 중인 데이터가 있어 삭제할 수 없다는 경고 메시지가 표시된다",
+      "related_endpoints": [
+        "DELETE /api/items/{id}"
+      ],
+      "related_components": [
+        "ItemManagePage",
+        "ItemGrid"
+      ],
+      "kic_refs": []
+    },
+    {
+      "id": "T006",
+      "title": "단가 입력 형식 검증",
+      "type": "unit",
+      "given": "품목 등록/수정 폼이 활성화된 상태",
+      "when": "입고단가 또는 출고단가 필드에 숫자가 아닌 문자를 입력하면",
+      "then": "입력이 제한되거나 유효성 검사 에러가 발생한다",
+      "related_endpoints": [],
+      "related_components": [
+        "ItemFormModal"
+      ],
+      "kic_refs": []
+    }
+  ],
+  "compiled_at": "2026-07-10T01:27:28.005364+00:00",
+  "kic_refs": []
+}

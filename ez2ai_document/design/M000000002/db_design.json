@@ -1,0 +1,89 @@
+{
+  "tables": [
+    {
+      "id": "df2c3119-af5b-4f99-a0e3-b1f289b571a0",
+      "menu_id": null,
+      "design_type": "table",
+      "table_name": "custmaster",
+      "table_comment": "거래처관리",
+      "sql_content": null,
+      "existing_table": null,
+      "description": "거래처 기본 정보 관리",
+      "sort_order": 0,
+      "columns": [
+        {
+          "id": "8c8ea7ce-7393-4ebc-81ce-d8a2c47cf90b",
+          "table_id": "df2c3119-af5b-4f99-a0e3-b1f289b571a0",
+          "column_name": "CUSTCD",
+          "column_comment": "거래처",
+          "data_type": "VARCHAR",
+          "data_length": "50",
+          "is_primary_key": true,
+          "is_not_null": true,
+          "is_unique": true,
+          "default_value": null,
+          "description": "",
+          "sort_order": 0,
+          "created_at": "2026-07-10T01:26:35.459754+00:00",
+          "updated_at": "2026-07-10T01:26:35.459754+00:00"
+        },
+        {
+          "id": "76fcbf3f-8243-4e6a-b954-a40867b42a05",
+          "table_id": "df2c3119-af5b-4f99-a0e3-b1f289b571a0",
+          "column_name": "CUSTNM",
+          "column_comment": "거래처명",
+          "data_type": "VARCHAR",
+          "data_length": "255",
+          "is_primary_key": false,
+          "is_not_null": true,
+          "is_unique": false,
+          "default_value": null,
+          "description": "",
+          "sort_order": 1,
+          "created_at": "2026-07-10T01:26:35.459754+00:00",
+          "updated_at": "2026-07-10T01:26:35.459754+00:00"
+        },
+        {
+          "id": "9a633855-b262-4647-8f7e-e0b7ceae328a",
+          "table_id": "df2c3119-af5b-4f99-a0e3-b1f289b571a0",
+          "column_name": "CUSTTP",
+          "column_comment": "거래처타입",
+          "data_type": "VARCHAR",
+          "data_length": "50",
+          "is_primary_key": false,
+          "is_not_null": false,
+          "is_unique": false,
+          "default_value": "NULL",
+          "description": "",
+          "sort_order": 2,
+          "created_at": "2026-07-10T01:26:35.459754+00:00",
+          "updated_at": "2026-07-10T01:26:35.459754+00:00"
+        },
+        {
+          "id": "177df57e-2ced-451d-a1a3-b97a8cb25ca8",
+          "table_id": "df2c3119-af5b-4f99-a0e3-b1f289b571a0",
+          "column_name": "BIZCODE",
+          "column_comment": "사업자번호",
+          "data_type": "VARCHAR",
+          "data_length": "50",
+          "is_primary_key": false,
+          "is_not_null": false,
+          "is_unique": false,
+          "default_value": "NULL",
+          "description": "",
+          "sort_order": 3,
+          "created_at": "2026-07-10T01:26:35.459754+00:00",
+          "updated_at": "2026-07-10T01:26:35.459754+00:00"
+        }
+      ],
+      "synced_at": null,
+      "auto_analyzed": true,
+      "connection_id": null,
+      "db_schema_name": null,
+      "created_at": "2026-07-10T01:26:35.459754+00:00",
+      "updated_at": "2026-07-10T01:26:35.459754+00:00"
+    }
+  ],
+  "relationships": [],
+  "updated_at": "2026-07-10T01:26:35.460753+00:00"
+}

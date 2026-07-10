@@ -1,0 +1,43 @@
+{
+  "docs": [
+    {
+      "id": "c96b563b-503a-42fa-a440-9d02c776544a",
+      "file_name": "table_design_simple.xlsx",
+      "file_path": "D:\\APP\\Project\\python\\ez2ai_builder\\projects\\P00001\\ez2ai_document\\naming-rules\\f1048abe_table_design_simple.xlsx",
+      "md_path": "D:\\APP\\Project\\python\\ez2ai_builder\\projects\\P00001\\ez2ai_document\\naming-rules\\f1048abe_table_design_simple.md",
+      "file_size": 15463,
+      "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+      "is_processed": true,
+      "sort_order": 0,
+      "description": null,
+      "created_at": "2026-07-10T01:24:37.998637+00:00",
+      "updated_at": "2026-07-10T01:24:37.998637+00:00"
+    },
+    {
+      "id": "73987f01-ef17-44c9-bed3-5d803e44f182",
+      "file_name": "구매관리기능개발설계서.pptx",
+      "file_path": "D:\\APP\\Project\\python\\ez2ai_builder\\projects\\P00001\\ez2ai_document\\naming-rules\\c1cbee54_구매관리기능개발설계서.pptx",
+      "md_path": "D:\\APP\\Project\\python\\ez2ai_builder\\projects\\P00001\\ez2ai_document\\naming-rules\\c1cbee54_구매관리기능개발설계서.md",
+      "file_size": 2617589,
+      "mime_type": "application/vnd.openxmlformats-officedocument.presentationml.presentation",
+      "is_processed": true,
+      "sort_order": 1,
+      "description": null,
+      "created_at": "2026-07-10T01:24:43.030351+00:00",
+      "updated_at": "2026-07-10T01:24:43.030351+00:00"
+    },
+    {
+      "id": "578fd72d-1baf-46dd-82cf-cba1b5128433",
+      "file_name": "구매관리시스템개발_계획.md",
+      "file_path": "D:\\APP\\Project\\python\\ez2ai_builder\\projects\\P00001\\ez2ai_document\\naming-rules\\70b5f025_구매관리시스템개발_계획.md",
+      "md_path": "D:\\APP\\Project\\python\\ez2ai_builder\\projects\\P00001\\ez2ai_document\\naming-rules\\70b5f025_구매관리시스템개발_계획.md",
+      "file_size": 2861,
+      "mime_type": "text/markdown",
+      "is_processed": true,
+      "sort_order": 2,
+      "description": null,
+      "created_at": "2026-07-10T01:24:46.625890+00:00",
+      "updated_at": "2026-07-10T01:24:46.625890+00:00"
+    }
+  ]
+}

@@ -12,6 +12,103 @@
       "updated_at": null
     }
   },
-  "menus": {},
-  "refreshed_at": "2026-07-10T00:49:37.642724Z"
+  "menus": {
+    "M000000002": {
+      "menu": {
+        "completed": false,
+        "updated_at": null,
+        "stale": false,
+        "stale_reason": null
+      },
+      "db": {
+        "completed": true,
+        "updated_at": "2026-07-10T01:26:35.461753Z",
+        "stale": false,
+        "stale_reason": null
+      },
+      "api": {
+        "completed": true,
+        "updated_at": "2026-07-10T01:27:09.159934Z",
+        "stale": false,
+        "stale_reason": null
+      },
+      "component": {
+        "completed": true,
+        "updated_at": "2026-07-10T01:27:17.607611Z",
+        "stale": false,
+        "stale_reason": null
+      },
+      "test": {
+        "completed": true,
+        "updated_at": "2026-07-10T01:27:25.056633Z",
+        "stale": false,
+        "stale_reason": null
+      }
+    },
+    "M000000003": {
+      "menu": {
+        "completed": false,
+        "updated_at": null,
+        "stale": false,
+        "stale_reason": null
+      },
+      "db": {
+        "completed": true,
+        "updated_at": "2026-07-10T01:26:35.470428Z",
+        "stale": false,
+        "stale_reason": null
+      },
+      "api": {
+        "completed": true,
+        "updated_at": "2026-07-10T01:27:12.326398Z",
+        "stale": false,
+        "stale_reason": null
+      },
+      "component": {
+        "completed": true,
+        "updated_at": "2026-07-10T01:27:19.578854Z",
+        "stale": false,
+        "stale_reason": null
+      },
+      "test": {
+        "completed": true,
+        "updated_at": "2026-07-10T01:27:28.020382Z",
+        "stale": false,
+        "stale_reason": null
+      }
+    },
+    "M000000005": {
+      "menu": {
+        "completed": false,
+        "updated_at": null,
+        "stale": false,
+        "stale_reason": null
+      },
+      "db": {
+        "completed": true,
+        "updated_at": "2026-07-10T01:26:35.479512Z",
+        "stale": false,
+        "stale_reason": null
+      },
+      "api": {
+        "completed": true,
+        "updated_at": "2026-07-10T01:27:15.368520Z",
+        "stale": false,
+        "stale_reason": null
+      },
+      "component": {
+        "completed": true,
+        "updated_at": "2026-07-10T01:27:21.880910Z",
+        "stale": false,
+        "stale_reason": null
+      },
+      "test": {
+        "completed": true,
+        "updated_at": "2026-07-10T01:27:30.571019Z",
+        "stale": false,
+        "stale_reason": null
+      }
+    }
+  },
+  "refreshed_at": "2026-07-10T01:27:30.571019Z"
 }

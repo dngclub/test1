@@ -1,0 +1,177 @@
+{
+  "schema_version": "1.0",
+  "menu_code": "M000000003",
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/api/items",
+      "summary": "품목 목록 조회 및 검색",
+      "auth": "user",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "keyword": {
+            "type": "string",
+            "description": "품목명 또는 바코드 검색어"
+          },
+          "itype": {
+            "type": "string",
+            "description": "품목구분 필터"
+          }
+        }
+      },
+      "response_schema": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "ITEMCD": {
+              "type": "string"
+            },
+            "ITEMNM": {
+              "type": "string"
+            },
+            "ITEMSN": {
+              "type": "string"
+            },
+            "ISPEC": {
+              "type": "string"
+            },
+            "BARCODE": {
+              "type": "string"
+            },
+            "PRICE1": {
+              "type": "string"
+            },
+            "PRICE2": {
+              "type": "string"
+            },
+            "ITYPE": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "domain_events": [],
+      "kic_refs": []
+    },
+    {
+      "method": "POST",
+      "path": "/api/items",
+      "summary": "품목 신규 등록",
+      "auth": "user",
+      "request_schema": {
+        "type": "object",
+        "required": [
+          "ITEMCD",
+          "ITEMNM"
+        ],
+        "properties": {
+          "ITEMCD": {
+            "type": "string"
+          },
+          "ITEMNM": {
+            "type": "string"
+          },
+          "ITEMSN": {
+            "type": "string"
+          },
+          "ISPEC": {
+            "type": "string"
+          },
+          "BARCODE": {
+            "type": "string"
+          },
+          "PRICE1": {
+            "type": "string"
+          },
+          "PRICE2": {
+            "type": "string"
+          },
+          "ITYPE": {
+            "type": "string"
+          }
+        }
+      },
+      "response_schema": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "domain_events": [
+        "ItemCreated"
+      ],
+      "kic_refs": []
+    },
+    {
+      "method": "PUT",
+      "path": "/api/items/{id}",
+      "summary": "품목 정보 수정",
+      "auth": "user",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "ITEMNM": {
+            "type": "string"
+          },
+          "ITEMSN": {
+            "type": "string"
+          },
+          "ISPEC": {
+            "type": "string"
+          },
+          "BARCODE": {
+            "type": "string"
+          },
+          "PRICE1": {
+            "type": "string"
+          },
+          "PRICE2": {
+            "type": "string"
+          },
+          "ITYPE": {
+            "type": "string"
+          }
+        }
+      },
+      "response_schema": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "domain_events": [
+        "ItemUpdated"
+      ],
+      "kic_refs": []
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/items/{id}",
+      "summary": "품목 삭제",
+      "auth": "admin",
+      "request_schema": {
+        "type": "object"
+      },
+      "response_schema": {
+        "type": "object",
+        "properties": {
+          "success": {
+            "type": "boolean"
+          }
+        }
+      },
+      "domain_events": [
+        "ItemDeleted"
+      ],
+      "kic_refs": []
+    }
+  ],
+  "compiled_at": "2026-07-10T01:27:12.309204+00:00",
+  "kic_refs": []
+}

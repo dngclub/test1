@@ -1,0 +1,157 @@
+{
+  "schema_version": "1.0",
+  "menu_code": "M000000002",
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/api/customers",
+      "summary": "거래처 목록 조회 및 검색",
+      "auth": "user",
+      "request_schema": {
+        "type": "object",
+        "properties": {
+          "searchType": {
+            "type": "string",
+            "enum": [
+              "CUSTNM",
+              "BIZCODE"
+            ]
+          },
+          "keyword": {
+            "type": "string"
+          }
+        }
+      },
+      "response_schema": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "CUSTCD": {
+              "type": "string"
+            },
+            "CUSTNM": {
+              "type": "string"
+            },
+            "CUSTTP": {
+              "type": "string"
+            },
+            "BIZCODE": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "domain_events": [
+        "CustomerSearched"
+      ],
+      "kic_refs": []
+    },
+    {
+      "method": "POST",
+      "path": "/api/customers",
+      "summary": "거래처 신규 등록",
+      "auth": "user",
+      "request_schema": {
+        "type": "object",
+        "required": [
+          "CUSTCD",
+          "CUSTNM"
+        ],
+        "properties": {
+          "CUSTCD": {
+            "type": "string"
+          },
+          "CUSTNM": {
+            "type": "string"
+          },
+          "CUSTTP": {
+            "type": "string"
+          },
+          "BIZCODE": {
+            "type": "string"
+          }
+        }
+      },
+      "response_schema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "domain_events": [
+        "CustomerCreated"
+      ],
+      "kic_refs": []
+    },
+    {
+      "method": "PUT",
+      "path": "/api/customers/:id",
+      "summary": "거래처 정보 수정",
+      "auth": "user",
+      "request_schema": {
+        "type": "object",
+        "required": [
+          "CUSTNM"
+        ],
+        "properties": {
+          "CUSTNM": {
+            "type": "string"
+          },
+          "CUSTTP": {
+            "type": "string"
+          },
+          "BIZCODE": {
+            "type": "string"
+          }
+        }
+      },
+      "response_schema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "domain_events": [
+        "CustomerUpdated"
+      ],
+      "kic_refs": []
+    },
+    {
+      "method": "DELETE",
+      "path": "/api/customers/:id",
+      "summary": "거래처 삭제",
+      "auth": "user",
+      "request_schema": {
+        "type": "object"
+      },
+      "response_schema": {
+        "type": "object",
+        "properties": {
+          "status": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string"
+          }
+        }
+      },
+      "domain_events": [
+        "CustomerDeleted"
+      ],
+      "kic_refs": []
+    }
+  ],
+  "compiled_at": "2026-07-10T01:27:09.147172+00:00",
+  "kic_refs": []
+}

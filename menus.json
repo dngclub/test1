@@ -1,1 +1,76 @@
-{"version": "1.0", "menus": []}
+{
+  "version": "1.0",
+  "updated_at": "2026-07-10T01:26:20.733751+00:00",
+  "menus": [
+    {
+      "id": "be7d119f-08b3-454a-b810-3c9203cc66b0",
+      "menu_code": "M000000001",
+      "parent_id": null,
+      "user_menu_code": null,
+      "menu_name": "기준정보",
+      "menu_type": "folder",
+      "sort_order": 0,
+      "is_generated": false,
+      "dev_plan_path": null,
+      "db_tables": [],
+      "created_at": "2026-07-10T01:26:20.554895+00:00",
+      "updated_at": "2026-07-10T01:26:20.554895+00:00"
+    },
+    {
+      "id": "caedfd80-bd36-4d0e-b1ef-e1559a6d117b",
+      "menu_code": "M000000002",
+      "parent_id": "be7d119f-08b3-454a-b810-3c9203cc66b0",
+      "user_menu_code": null,
+      "menu_name": "거래처관리",
+      "menu_type": "function",
+      "sort_order": 0,
+      "is_generated": false,
+      "dev_plan_path": null,
+      "db_tables": [],
+      "created_at": "2026-07-10T01:26:20.554895+00:00",
+      "updated_at": "2026-07-10T01:26:20.554895+00:00"
+    },
+    {
+      "id": "44217c99-8eab-4b43-b7f1-9c1e2d330787",
+      "menu_code": "M000000003",
+      "parent_id": "be7d119f-08b3-454a-b810-3c9203cc66b0",
+      "user_menu_code": null,
+      "menu_name": "품목관리",
+      "menu_type": "function",
+      "sort_order": 1,
+      "is_generated": false,
+      "dev_plan_path": null,
+      "db_tables": [],
+      "created_at": "2026-07-10T01:26:20.554895+00:00",
+      "updated_at": "2026-07-10T01:26:20.554895+00:00"
+    },
+    {
+      "id": "c2592c18-fc86-4dc8-8939-ba72f2b5dcaf",
+      "menu_code": "M000000004",
+      "parent_id": null,
+      "user_menu_code": null,
+      "menu_name": "구매관리",
+      "menu_type": "folder",
+      "sort_order": 1,
+      "is_generated": false,
+      "dev_plan_path": null,
+      "db_tables": [],
+      "created_at": "2026-07-10T01:26:20.554895+00:00",
+      "updated_at": "2026-07-10T01:26:20.554895+00:00"
+    },
+    {
+      "id": "75c92b22-fd68-4b09-89b1-e8651057bdf2",
+      "menu_code": "M000000005",
+      "parent_id": "c2592c18-fc86-4dc8-8939-ba72f2b5dcaf",
+      "user_menu_code": null,
+      "menu_name": "구매입력",
+      "menu_type": "function",
+      "sort_order": 0,
+      "is_generated": false,
+      "dev_plan_path": null,
+      "db_tables": [],
+      "created_at": "2026-07-10T01:26:20.554895+00:00",
+      "updated_at": "2026-07-10T01:26:20.554895+00:00"
+    }
+  ]
+}

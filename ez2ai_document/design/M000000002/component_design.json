@@ -1,0 +1,94 @@
+{
+  "schema_version": "1.0",
+  "menu_code": "M000000002",
+  "page": {
+    "name": "CustomerPage",
+    "route": "/customers"
+  },
+  "components": [
+    {
+      "name": "CustomerSearchForm",
+      "type": "component",
+      "props": [
+        {
+          "name": "onSearch",
+          "type": "(params: {type: string, keyword: string}) => void",
+          "required": true
+        },
+        {
+          "name": "filterOptions",
+          "type": "Array<{label: string, value: string}>",
+          "required": true
+        }
+      ],
+      "children": [],
+      "description": "거래처 검색 조건 입력 및 조회 버튼 영역"
+    },
+    {
+      "name": "CustomerGrid",
+      "type": "component",
+      "props": [
+        {
+          "name": "data",
+          "type": "Customer[]",
+          "required": true
+        },
+        {
+          "name": "onSelectRow",
+          "type": "(customer: Customer) => void",
+          "required": true
+        }
+      ],
+      "children": [],
+      "description": "거래처 목록 데이터 그리드"
+    },
+    {
+      "name": "CustomerDetailForm",
+      "type": "component",
+      "props": [
+        {
+          "name": "selectedItem",
+          "type": "Customer | null",
+          "required": false
+        },
+        {
+          "name": "onSave",
+          "type": "(customer: Customer) => Promise<void>",
+          "required": true
+        },
+        {
+          "name": "onDelete",
+          "type": "(id: string) => Promise<void>",
+          "required": true
+        },
+        {
+          "name": "onReset",
+          "type": "() => void",
+          "required": true
+        }
+      ],
+      "children": [],
+      "description": "거래처 상세 정보 입력, 수정, 삭제 및 초기화 폼"
+    }
+  ],
+  "hooks": [
+    {
+      "name": "useCustomerList",
+      "deps": [
+        "GET /api/customers"
+      ],
+      "description": "거래처 목록 조회 및 검색 로직"
+    },
+    {
+      "name": "useCustomerMutation",
+      "deps": [
+        "POST /api/customers",
+        "PUT /api/customers/:id",
+        "DELETE /api/customers/:id"
+      ],
+      "description": "거래처 생성, 수정, 삭제 비즈니스 로직 및 중복 체크"
+    }
+  ],
+  "compiled_at": "2026-07-10T01:27:17.591032+00:00",
+  "kic_refs": []
+}

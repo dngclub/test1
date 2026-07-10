@@ -1,0 +1,102 @@
+{
+  "schema_version": "1.0",
+  "menu_code": "M000000002",
+  "scenarios": [
+    {
+      "id": "T001",
+      "title": "거래처 목록 검색 및 조회",
+      "type": "e2e",
+      "given": "거래처 관리 페이지에 접속한 상태에서 검색 조건과 검색어를 입력한다",
+      "when": "조회 버튼을 클릭한다",
+      "then": "입력한 조건에 맞는 거래처 목록이 데이터 그리드에 필터링되어 표시된다",
+      "related_endpoints": [
+        "GET /api/customers"
+      ],
+      "related_components": [
+        "CustomerPage",
+        "CustomerSearchForm",
+        "CustomerGrid"
+      ],
+      "kic_refs": []
+    },
+    {
+      "id": "T002",
+      "title": "신규 거래처 등록 성공",
+      "type": "e2e",
+      "given": "초기화 버튼을 눌러 입력 폼을 활성화하고 필수 항목인 거래처코드와 거래처명을 입력한다",
+      "when": "저장 버튼을 클릭한다",
+      "then": "중복 체크를 통과하고 데이터가 저장되며 그리드에 신규 거래처가 반영된다",
+      "related_endpoints": [
+        "POST /api/customers"
+      ],
+      "related_components": [
+        "CustomerPage",
+        "CustomerDetailForm",
+        "CustomerGrid"
+      ],
+      "kic_refs": []
+    },
+    {
+      "id": "T003",
+      "title": "중복 거래처 코드 등록 방지",
+      "type": "integration",
+      "given": "이미 존재하는 거래처 코드를 입력한다",
+      "when": "저장 버튼을 클릭한다",
+      "then": "이미 존재하는 거래처 코드라는 에러 메시지가 노출되고 저장이 차단된다",
+      "related_endpoints": [
+        "POST /api/customers"
+      ],
+      "related_components": [
+        "CustomerDetailForm"
+      ],
+      "kic_refs": []
+    },
+    {
+      "id": "T004",
+      "title": "거래처 정보 수정",
+      "type": "e2e",
+      "given": "그리드에서 특정 거래처 행을 선택하여 상세 영역에 데이터를 로드한다",
+      "when": "거래처명 등 정보를 수정하고 저장 버튼을 클릭한다",
+      "then": "수정된 정보가 DB에 반영되고 그리드 데이터가 갱신된다",
+      "related_endpoints": [
+        "PUT /api/customers/:id"
+      ],
+      "related_components": [
+        "CustomerPage",
+        "CustomerGrid",
+        "CustomerDetailForm"
+      ],
+      "kic_refs": []
+    },
+    {
+      "id": "T005",
+      "title": "거래처 삭제 시 참조 무결성 확인",
+      "type": "integration",
+      "given": "구매 내역(polist)에 등록된 거래처를 선택한다",
+      "when": "삭제 버튼을 클릭하고 확인 팝업에서 승인한다",
+      "then": "참조 무결성 위반으로 인해 삭제가 방지되고 오류 메시지가 표시된다",
+      "related_endpoints": [
+        "DELETE /api/customers/:id"
+      ],
+      "related_components": [
+        "CustomerDetailForm"
+      ],
+      "kic_refs": []
+    },
+    {
+      "id": "T006",
+      "title": "필수 입력값 누락 시 저장 방지",
+      "type": "unit",
+      "given": "거래처 코드 또는 거래처명을 비워둔 상태이다",
+      "when": "저장 버튼을 클릭한다",
+      "then": "필수 입력 항목을 확인하라는 안내 메시지가 노출되고 API 호출이 발생하지 않는다",
+      "related_endpoints": [],
+      "related_components": [
+        "CustomerDetailForm"
+      ],
+      "kic_refs": []
+    }
+  ],
+  "compiled_at": "2026-07-10T01:27:25.042479+00:00",
+  "kic_refs": []
+}
