@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>검색바 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">검색바 · xx-search</div><div class="meta">흰 카드, 12~18px 패딩, 우측 액션 그룹</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>2 필드 + 액션</h2>
+    <div class="xx-search">
+      <div class="xx-field">
+        <label>제목</label>
+        <input type="text" placeholder="키워드">
+      </div>
+      <div class="xx-field">
+        <label>등록일</label>
+        <input type="date">
+      </div>
+      <div class="xx-search-actions">
+        <button class="eg-btn eg-btn-primary">🔍 검색</button>
+        <button class="eg-btn eg-btn-default">초기화</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>다중 필드</h2>
+    <div class="xx-search">
+      <div class="xx-field"><label>키워드</label><input type="text" placeholder="제목/내용"></div>
+      <div class="xx-field"><label>상태</label>
+        <select>
+          <option>전체</option><option>작업요청</option><option>작업접수</option>
+          <option>작업시작</option><option>작업완료</option>
+        </select>
+      </div>
+      <div class="xx-field"><label>중요도</label>
+        <select>
+          <option>전체</option><option>매우중요</option><option>중요</option><option>보통</option>
+        </select>
+      </div>
+      <div class="xx-field">
+        <label>기간</label>
+        <div style="display:flex; align-items:center; gap:6px;">
+          <input type="date" value="2026-05-01">
+          <span style="color:var(--ez-text-muted);">~</span>
+          <input type="date" value="2026-05-31">
+        </div>
+      </div>
+      <div class="xx-search-actions">
+        <button class="eg-btn eg-btn-primary">🔍 검색</button>
+        <button class="eg-btn eg-btn-default">초기화</button>
+        <button class="eg-btn eg-btn-outline">+ 등록</button>
+      </div>
+    </div>
+
+    <pre class="dx-code">&lt;div className="xx-search"&gt;
+  &lt;div className="xx-field"&gt;
+    &lt;label&gt;키워드&lt;/label&gt;
+    &lt;input value={q} onChange={(e)=&gt;setQ(e.target.value)} /&gt;
+  &lt;/div&gt;
+  &lt;div className="xx-field"&gt;
+    &lt;label&gt;상태&lt;/label&gt;
+    &lt;select value={status} onChange={...}&gt;
+      &lt;option value=""&gt;전체&lt;/option&gt;
+      {STATUS_OPTIONS.map(o =&gt; &lt;option key={o.cd} value={o.cd}&gt;{o.label}&lt;/option&gt;)}
+    &lt;/select&gt;
+  &lt;/div&gt;
+  &lt;div className="xx-search-actions"&gt;
+    &lt;button className="eg-btn eg-btn-primary" onClick={fetchList}&gt;🔍 검색&lt;/button&gt;
+    &lt;button className="eg-btn eg-btn-default" onClick={reset}&gt;초기화&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>Enter 키로 검색</h2>
+    <pre class="dx-code">// 검색바 전체에 keyDown 캐치
+&lt;div className="xx-search" onKeyDown={(e) =&gt; { if (e.key === 'Enter') fetchList() }}&gt;
+  ...
+&lt;/div&gt;</pre>
+  </div>
+
+</div>
+
+</body>
+</html>

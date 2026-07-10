@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>모바일 점검 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+  <style>
+    body { background: linear-gradient(180deg, #1f2937, #0f172a); padding: 30px 0; }
+    html.dark body { background: linear-gradient(180deg, #000, #161b22); }
+    .phone {
+      width: 380px; max-width: 95vw; margin: 0 auto;
+      background: var(--ez-bg); border-radius: 32px;
+      padding: 14px;
+      box-shadow: 0 50px 100px rgba(0,0,0,0.6);
+    }
+    .phone-screen {
+      background: var(--ez-bg-page);
+      border-radius: 22px;
+      overflow: hidden;
+      height: 700px;
+      display: flex; flex-direction: column;
+    }
+    .ph-status {
+      height: 32px; padding: 6px 18px;
+      display:flex; justify-content:space-between; align-items:center;
+      font-size: 11px; color: var(--ez-text-strong); font-weight:600;
+      background: var(--ez-card);
+    }
+    .ph-topbar {
+      display:flex; align-items:center; gap:10px;
+      padding: 10px 14px;
+      background: var(--ez-primary); color: #fff;
+    }
+    .ph-topbar .title { font-size:15px; font-weight:700; flex:1; }
+    .ph-back { width:28px; height:28px; display:flex; align-items:center; justify-content:center; }
+    .ph-body { flex:1; overflow:auto; padding: 14px; display:flex; flex-direction:column; gap:12px; }
+
+    .ph-card { background:var(--ez-card); border:1px solid var(--ez-border); border-radius:10px; padding:12px 14px; }
+    .ph-card .ttl { font-size:14px; font-weight:700; color:var(--ez-text-strong); margin-bottom:4px; }
+    .ph-card .sub { font-size:12px; color:var(--ez-text-muted); }
+
+    .ph-check {
+      display:flex; align-items:center; gap:12px;
+      padding: 12px 14px;
+      background:var(--ez-card); border:1px solid var(--ez-border); border-radius:10px;
+    }
+    .ph-check .label { flex:1; }
+    .ph-check .label .t { font-size:14px; font-weight:600; color:var(--ez-text); }
+    .ph-check .label .n { font-size:11px; color:var(--ez-text-muted); margin-top:2px; }
+
+    .ph-result {
+      display:grid; grid-template-columns: 1fr 1fr 1fr; gap:6px;
+    }
+    .ph-result button {
+      height: 38px;
+      border: 1px solid var(--ez-border);
+      background: var(--ez-card);
+      border-radius:8px;
+      font-size: 13px; font-weight:600;
+      cursor:pointer;
+    }
+    .ph-result button.is-ok    { border-color:var(--ez-success); background:var(--ez-success-bg); color:var(--ez-success-strong); }
+    .ph-result button.is-warn  { border-color:var(--ez-warning); background:var(--ez-warning-bg); color:var(--ez-warning-text); }
+    .ph-result button.is-bad   { border-color:var(--ez-danger); background:var(--ez-danger-bg); color:var(--ez-danger-text); }
+
+    .ph-footer {
+      padding:12px 14px;
+      background:var(--ez-card); border-top:1px solid var(--ez-border);
+      display:flex; gap:8px;
+    }
+    .ph-footer .eg-btn { flex:1; height: 42px; font-size:15px; justify-content:center; }
+  </style>
+</head>
+<body>
+
+<div class="phone">
+  <div class="phone-screen">
+    <div class="ph-status">
+      <span>14:32</span>
+      <span>📶 LTE 🔋 78%</span>
+    </div>
+    <div class="ph-topbar">
+      <div class="ph-back">‹</div>
+      <div class="title">비상발전기 월간점검</div>
+      <div>📷</div>
+    </div>
+
+    <div class="ph-body">
+      <div class="ph-card">
+        <div class="ttl">CHK-2026-083</div>
+        <div class="sub">📍 본관 B1 기계실 · 김영희 · 2026-05-18 14:00</div>
+        <div style="margin-top:6px; display:flex; gap:6px; flex-wrap:wrap;">
+          <span class="xx-pill is-info">월간</span>
+          <span class="xx-pill is-warning">진행중 5/8</span>
+        </div>
+      </div>
+
+      <!-- 점검 항목들 -->
+      <div class="ph-check">
+        <div class="label"><div class="t">1. 외관 검사</div><div class="n">기름누유, 변형 확인</div></div>
+      </div>
+      <div class="ph-result">
+        <button class="is-ok">✓ 정상</button>
+        <button>주의</button>
+        <button>이상</button>
+      </div>
+
+      <div class="ph-check">
+        <div class="label"><div class="t">2. 오일 양 확인</div><div class="n">게이지 풀 ~ 0.5 사이</div></div>
+      </div>
+      <div class="ph-result">
+        <button class="is-ok">✓ 정상</button>
+        <button>주의</button>
+        <button>이상</button>
+      </div>
+
+      <div class="ph-check">
+        <div class="label"><div class="t">3. 오일 누유 여부</div><div class="n">드레인, 가스켓 부위</div></div>
+      </div>
+      <div class="ph-result">
+        <button>정상</button>
+        <button>주의</button>
+        <button class="is-bad">✕ 이상</button>
+      </div>
+      <textarea class="xx-textarea" placeholder="조치 내용 / 비고" style="min-height:60px;">드레인 부위 미세 누유 - 가스켓 교체 요청</textarea>
+
+      <div class="ph-check">
+        <div class="label"><div class="t">4. 축전지 전압</div><div class="n">12.6V 이상</div></div>
+      </div>
+      <div class="ph-result">
+        <button>정상</button>
+        <button class="is-warn">⚠ 주의</button>
+        <button>이상</button>
+      </div>
+
+      <!-- 사진 첨부 -->
+      <div class="ph-card">
+        <div class="ttl">📸 현장 사진</div>
+        <div class="sub">최대 5장 · 누유 부위 촬영 필요</div>
+        <div style="display:flex; gap:6px; margin-top:8px;">
+          <div style="width:60px; height:60px; background:var(--ez-card-soft); border:1px solid var(--ez-border); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:18px;">📷</div>
+          <div style="width:60px; height:60px; background:var(--ez-card-soft); border:1px dashed var(--ez-border-dashed); border-radius:6px; display:flex; align-items:center; justify-content:center; color:var(--ez-text-soft); font-size:20px;">+</div>
+        </div>
+      </div>
+
+      <!-- 서명 -->
+      <div class="ph-card">
+        <div class="ttl">✍️ 점검자 서명</div>
+        <div class="xx-sign-pad" style="margin-top:8px; height:80px;">손가락으로 서명</div>
+      </div>
+    </div>
+
+    <div class="ph-footer">
+      <button class="eg-btn eg-btn-default">임시저장</button>
+      <button class="eg-btn eg-btn-primary">제출</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

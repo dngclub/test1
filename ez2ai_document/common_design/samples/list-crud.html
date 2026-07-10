@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>목록 + CRUD — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">샘플 · 목록 + CRUD (작업오더)</div><div class="meta">AnnouncementPage / WorkOrderPage 의 표준 형태</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div style="padding:0;">
+
+  <div class="xx-page" style="padding:18px 22px; min-height:calc(100vh - 60px);">
+
+    <div class="xx-header">
+      <h1>작업오더 관리</h1>
+      <div class="xx-header-actions">
+        <button class="eg-btn eg-btn-default">🔄 새로고침</button>
+        <button class="eg-btn eg-btn-default">📊 엑셀</button>
+        <button class="eg-btn eg-btn-primary">+ 등록</button>
+      </div>
+    </div>
+
+    <div class="xx-search">
+      <div class="xx-field"><label>오더번호</label><input type="text" placeholder="WO-..."></div>
+      <div class="xx-field"><label>제목</label><input type="text" placeholder="키워드"></div>
+      <div class="xx-field"><label>상태</label>
+        <select>
+          <option>전체</option><option>작업요청</option><option>작업접수</option>
+          <option selected>작업시작</option><option>작업완료</option><option>작업지연</option>
+        </select>
+      </div>
+      <div class="xx-field"><label>중요도</label>
+        <select><option>전체</option><option>매우중요</option><option>중요</option><option>보통</option></select>
+      </div>
+      <div class="xx-field">
+        <label>요청일</label>
+        <div style="display:flex; align-items:center; gap:6px;">
+          <input type="date" value="2026-05-01"><span style="color:var(--ez-text-muted);">~</span><input type="date" value="2026-05-31">
+        </div>
+      </div>
+      <div class="xx-search-actions">
+        <button class="eg-btn eg-btn-primary">🔍 검색</button>
+        <button class="eg-btn eg-btn-default">초기화</button>
+      </div>
+    </div>
+
+    <div class="eg-grid-wrap" style="flex:1; min-height:0;">
+      <div class="eg-grid-head">
+        <div class="eg-grid-head-left">전체 248건 · 진행 37건 · 완료 186건 · 지연 12건</div>
+        <div class="eg-grid-head-right">
+          <span class="xx-text-soft xx-fs-xs">행 클릭 → 상세 보기</span>
+          <div class="eg-page-size"><span>행 수</span><select><option>20</option><option>30</option><option selected>50</option></select></div>
+        </div>
+      </div>
+      <div class="eg-grid-scroll" style="max-height:420px;">
+        <table class="eg-grid">
+          <thead>
+            <tr>
+              <th class="eg-grid-check"><input type="checkbox"></th>
+              <th style="width:60px;">번호</th>
+              <th style="width:130px;">오더번호</th>
+              <th>제목</th>
+              <th style="width:110px;">요청자</th>
+              <th style="width:90px;">상태</th>
+              <th style="width:80px;">중요도</th>
+              <th style="width:90px;">유형</th>
+              <th style="width:110px;">요청일</th>
+              <th style="width:90px;">기한</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>248</td><td>WO-2026-0248</td><td>공조기 #02 정기점검</td><td>홍길동</td><td><span class="xx-pill is-success">완료</span></td><td><span class="xx-pill is-warning">중요</span></td><td><span class="xx-pill is-info">시설</span></td><td>05-19</td><td>05-20</td></tr>
+            <tr class="clickable sel"><td class="eg-grid-check"><input type="checkbox" checked></td><td>247</td><td>WO-2026-0247</td><td>비상발전기 누유 점검</td><td>김영희</td><td><span class="xx-pill is-warning">진행</span></td><td><span class="xx-pill is-danger">매우중요</span></td><td><span class="xx-pill is-info">전기</span></td><td>05-18</td><td>05-18</td></tr>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>246</td><td>WO-2026-0246</td><td>외부 조명 LED 교체</td><td>이철수</td><td><span class="xx-pill is-info">접수</span></td><td><span class="xx-pill">보통</span></td><td><span class="xx-pill is-info">전기</span></td><td>05-18</td><td>05-25</td></tr>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>245</td><td>WO-2026-0245</td><td>스프링클러 압력 점검</td><td>박지수</td><td><span class="xx-pill is-danger">지연</span></td><td><span class="xx-pill is-warning">중요</span></td><td><span class="xx-pill is-info">방재</span></td><td>05-17</td><td style="color:var(--ez-danger);">05-17</td></tr>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>244</td><td>WO-2026-0244</td><td>옥상 안전난간 보수</td><td>최민호</td><td><span class="xx-pill is-success">완료</span></td><td><span class="xx-pill">보통</span></td><td><span class="xx-pill is-info">시설</span></td><td>05-17</td><td>05-19</td></tr>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>243</td><td>WO-2026-0243</td><td>주차장 침수 대응</td><td>홍길동</td><td><span class="xx-pill is-success">완료</span></td><td><span class="xx-pill is-danger">매우중요</span></td><td><span class="xx-pill is-info">시설</span></td><td>05-16</td><td>05-16</td></tr>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>242</td><td>WO-2026-0242</td><td>방화셔터 점검</td><td>김영희</td><td><span class="xx-pill is-info">접수</span></td><td><span class="xx-pill is-warning">중요</span></td><td><span class="xx-pill is-info">방재</span></td><td>05-15</td><td>05-22</td></tr>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>241</td><td>WO-2026-0241</td><td>전기실 환기팬 청소</td><td>이철수</td><td><span class="xx-pill is-warning">진행</span></td><td><span class="xx-pill">보통</span></td><td><span class="xx-pill is-info">전기</span></td><td>05-15</td><td>05-20</td></tr>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>240</td><td>WO-2026-0240</td><td>조경 가로수 정비</td><td>박지수</td><td><span class="xx-pill is-success">완료</span></td><td><span class="xx-pill">보통</span></td><td><span class="xx-pill is-info">조경</span></td><td>05-14</td><td>05-16</td></tr>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>239</td><td>WO-2026-0239</td><td>관제실 모니터 교체</td><td>최민호</td><td><span class="xx-pill is-info">접수</span></td><td><span class="xx-pill">보통</span></td><td><span class="xx-pill is-muted">관제</span></td><td>05-14</td><td>05-21</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="eg-pager">
+        <button disabled>«</button><button disabled>‹</button>
+        <button class="active">1</button><button>2</button><button>3</button><button>4</button><button>5</button>
+        <button>›</button><button>»</button>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+</body>
+</html>

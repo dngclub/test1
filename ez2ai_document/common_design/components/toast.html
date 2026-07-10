@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>토스트 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">토스트 · useToast</div><div class="meta">우상단 3 초 자동 사라짐 - success/error/info/warning</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>4 가지 타입</h2>
+    <div style="position:relative; min-height:200px; background:var(--ez-card-soft); border:1px dashed var(--ez-border); border-radius:8px;">
+      <div class="eg-toast-stack" style="position:absolute;">
+        <div class="eg-toast eg-toast-success">✓ 저장되었습니다.</div>
+        <div class="eg-toast eg-toast-error">✕ 저장 실패: 이름은 필수입니다.</div>
+        <div class="eg-toast eg-toast-info">ℹ 검색 결과가 없습니다.</div>
+        <div class="eg-toast eg-toast-warning">⚠ 변경사항이 자동 저장됩니다.</div>
+      </div>
+    </div>
+    <pre class="dx-code">import { ToastStack, useToast } from '../M000000000/shared'
+
+const { toasts, show } = useToast()
+
+// 어디서나
+show('success', '저장되었습니다.')
+show('error', err.response?.data?.detail || '저장 실패')
+show('info', '검색 결과가 없습니다.')
+show('warning', '변경사항이 자동 저장됩니다.')
+
+// 페이지 루트에
+&lt;ToastStack toasts={toasts} /&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>표준 핸들러 패턴</h2>
+
+    <h3>1) 검색</h3>
+    <pre class="dx-code">try {
+  const res = await api.get('/api/work-orders', { params: { ... }})
+  setItems(res.data.items || [])
+} catch (err) {
+  if (err.response?.status === 401) { navigate('/login'); return }
+  show('error', err.response?.data?.detail || '조회 실패')
+}</pre>
+
+    <h3>2) 저장</h3>
+    <pre class="dx-code">try {
+  await api.post('/api/work-orders', body)
+  show('success', '저장되었습니다.')
+  setForm(null); void fetchList()
+} catch (err) {
+  show('error', err.response?.data?.detail || '저장 실패')
+}</pre>
+
+    <h3>3) 다건 처리</h3>
+    <pre class="dx-code">const res = await api.post('/api/work-orders/delete', { ids })
+const ok = (res.data.deleted || []).length
+const fail = (res.data.errors || []).length
+show(fail ? 'info' : 'success', `${ok}건 삭제${fail ? ` · ${fail}건 실패` : ''}`)</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>가이드</h2>
+    <ul style="font-size:14px; line-height:1.8;">
+      <li>저장/삭제/등록 성공 → success</li>
+      <li>API 실패, 검증 실패 → error (백엔드 detail 문구 우선)</li>
+      <li>안내성 정보 → info ("이미 처리된 항목입니다" 등)</li>
+      <li>빈 결과는 그리드 emptyMessage 사용 - 토스트 X</li>
+      <li>401 → /login 리다이렉트 + 토스트 X</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>

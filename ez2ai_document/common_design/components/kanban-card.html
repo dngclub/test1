@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>칸반 카드 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">칸반 카드 · xx-kanban-card</div><div class="meta">작업오더, 결재 진행 현황 등 상태별 진행 시각화</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>단일 카드</h2>
+    <div style="max-width:280px;">
+      <div class="xx-kanban-card">
+        <div class="title">공조기 #02 정기점검</div>
+        <div class="meta">
+          <span>WO-248</span>
+          <span>👤 홍길동</span>
+          <span>📅 05-19</span>
+        </div>
+        <div style="margin-top:8px;">
+          <span class="xx-pill is-warning">중요</span>
+          <span class="xx-pill is-info" style="margin-left:4px;">시설</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>중요도/긴급도에 따른 색 변형</h2>
+    <div class="dx-grid">
+      <div class="xx-kanban-card" style="border-left-color:var(--ez-danger);">
+        <div class="title">비상발전기 누유</div>
+        <div class="meta"><span>WO-247</span><span>👤 김영희</span></div>
+        <div style="margin-top:6px;"><span class="xx-pill is-danger">매우중요</span></div>
+      </div>
+      <div class="xx-kanban-card" style="border-left-color:var(--ez-warning);">
+        <div class="title">스프링클러 점검</div>
+        <div class="meta"><span>WO-245</span><span>👤 박지수</span></div>
+        <div style="margin-top:6px;"><span class="xx-pill is-warning">중요</span></div>
+      </div>
+      <div class="xx-kanban-card">
+        <div class="title">옥상 난간 보수</div>
+        <div class="meta"><span>WO-244</span><span>👤 최민호</span></div>
+        <div style="margin-top:6px;"><span class="xx-pill">보통</span></div>
+      </div>
+      <div class="xx-kanban-card" style="border-left-color:var(--ez-success);">
+        <div class="title">방화셔터 점검 완료</div>
+        <div class="meta"><span>WO-242</span><span>👤 김영희</span></div>
+        <div style="margin-top:6px;"><span class="xx-pill is-success">완료</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>구현</h2>
+    <pre class="dx-code">&lt;div className="xx-kanban-card"
+     style={{ borderLeftColor: severityColor(row.importance) }}
+     onClick={() =&gt; setActive(row)}&gt;
+  &lt;div className="title"&gt;{row.work_order_name}&lt;/div&gt;
+  &lt;div className="meta"&gt;
+    &lt;span&gt;WO-{row.work_order_id}&lt;/span&gt;
+    &lt;span&gt;👤 {row.assignee_name}&lt;/span&gt;
+    &lt;span&gt;📅 {fmtDate(row.work_req_date)}&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div className="xx-mt-2"&gt;
+    &lt;span className={`xx-pill ${impCls(row.importance_level_type_cd)}`}&gt;
+      {impLabel(row.importance_level_type_cd)}
+    &lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>그리드 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">그리드 · &lt;Grid /&gt; / eg-grid</div><div class="meta">shared/Grid.tsx 사용 - 자체 div/table 직접 작성 금지</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>표준 구조</h2>
+    <p class="lead">상단 toolbar (총건수 / 행수 / 엑셀) + 본문 table (sticky header) + 하단 페이저.</p>
+    <div class="eg-grid-wrap">
+      <div class="eg-grid-head">
+        <div class="eg-grid-head-left">전체 248건 <span class="xx-pill is-info" style="margin-left:8px;">검색: "공조"</span></div>
+        <div class="eg-grid-head-right">
+          <span class="xx-text-soft xx-fs-xs">행 클릭 → 상세 보기</span>
+          <div class="eg-page-size">
+            <span>행 수</span>
+            <select><option>20</option><option selected>30</option><option>50</option><option>100</option><option>500</option></select>
+          </div>
+          <button class="eg-btn eg-btn-sm eg-btn-default">📊 엑셀</button>
+        </div>
+      </div>
+      <div class="eg-grid-scroll" style="max-height:340px;">
+        <table class="eg-grid">
+          <thead>
+            <tr>
+              <th class="eg-grid-check"><input type="checkbox"></th>
+              <th style="width:80px;">번호</th>
+              <th>오더번호</th>
+              <th>제목</th>
+              <th style="width:110px;">요청자</th>
+              <th style="width:90px;">상태</th>
+              <th style="width:80px;">중요도</th>
+              <th style="width:110px;">요청일</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>248</td><td>WO-2026-0248</td><td>공조기 #02 정기점검</td><td>홍길동</td><td><span class="xx-pill is-success">완료</span></td><td><span class="xx-pill is-warning">중요</span></td><td>2026-05-19</td></tr>
+            <tr class="clickable sel"><td class="eg-grid-check"><input type="checkbox" checked></td><td>247</td><td>WO-2026-0247</td><td>비상발전기 누유 점검</td><td>김영희</td><td><span class="xx-pill is-warning">진행</span></td><td><span class="xx-pill is-danger">매우중요</span></td><td>2026-05-18</td></tr>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>246</td><td>WO-2026-0246</td><td>외부 조명 LED 교체</td><td>이철수</td><td><span class="xx-pill is-info">접수</span></td><td><span class="xx-pill">보통</span></td><td>2026-05-18</td></tr>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>245</td><td>WO-2026-0245</td><td>스프링클러 압력 점검</td><td>박지수</td><td><span class="xx-pill is-danger">지연</span></td><td><span class="xx-pill is-warning">중요</span></td><td>2026-05-17</td></tr>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>244</td><td>WO-2026-0244</td><td>옥상 안전난간 보수</td><td>최민호</td><td><span class="xx-pill is-success">완료</span></td><td><span class="xx-pill">보통</span></td><td>2026-05-17</td></tr>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>243</td><td>WO-2026-0243</td><td>주차장 침수 대응</td><td>홍길동</td><td><span class="xx-pill is-success">완료</span></td><td><span class="xx-pill is-danger">매우중요</span></td><td>2026-05-16</td></tr>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>242</td><td>WO-2026-0242</td><td>방화셔터 점검</td><td>김영희</td><td><span class="xx-pill is-info">접수</span></td><td><span class="xx-pill is-warning">중요</span></td><td>2026-05-15</td></tr>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>241</td><td>WO-2026-0241</td><td>전기실 환기팬 청소</td><td>이철수</td><td><span class="xx-pill is-warning">진행</span></td><td><span class="xx-pill">보통</span></td><td>2026-05-15</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="eg-pager">
+        <button disabled>«</button><button disabled>‹</button>
+        <button class="active">1</button><button>2</button><button>3</button><button>4</button><button>5</button>
+        <button>›</button><button>»</button>
+      </div>
+    </div>
+
+    <pre class="dx-code">import Grid from '../M000000000/shared/Grid'
+
+const cols = [
+  { key: 'work_order_id', header: '오더번호', width: 130 },
+  { key: 'work_order_name', header: '제목' },
+  { key: 'user_name', header: '요청자', width: 110 },
+  { key: 'work_status_cd', header: '상태', width: 90, align: 'center',
+    render: (r) =&gt; &lt;span className={`xx-pill ${stCls(r.work_status_cd)}`}&gt;{r.work_status_label}&lt;/span&gt;,
+  },
+  { key: 'work_req_date', header: '요청일', width: 110, render: (r) =&gt; fmtDate(r.work_req_date) },
+]
+
+&lt;Grid&lt;Row&gt;
+  columns={cols} rows={rows}
+  rowKey={(r) =&gt; r.work_order_id}
+  onRowClick={(r) =&gt; setActive(r)}
+  selectable
+  pageSize={pageSize} onPageSizeChange={setPageSize}
+  emptyMessage="검색 결과가 없습니다."
+/&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>컬럼 정렬·너비 규칙</h2>
+    <ul style="font-size:14px; line-height:1.8;">
+      <li>코드/숫자/날짜는 <b>width 명시</b> (예: 90, 110, 130). 가변은 제목/내용 1 개만.</li>
+      <li>상태 칩 셀은 <code>align: 'center'</code></li>
+      <li>금액/수량은 <code>align: 'right'</code> + <code>font-variant-numeric: tabular-nums</code></li>
+      <li>긴 텍스트는 자동 <code>ellipsis</code> + 툴팁 (셀 hover)</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>

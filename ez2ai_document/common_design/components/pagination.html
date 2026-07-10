@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>페이지네이션 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">페이지네이션 · eg-pager</div><div class="meta">±2 윈도우, 5 사이즈 옵션</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>기본</h2>
+    <div class="eg-pager" style="max-width:520px; border:1px solid var(--ez-border); border-radius:0 0 8px 8px;">
+      <button disabled>«</button><button disabled>‹</button>
+      <button class="active">1</button><button>2</button><button>3</button>
+      <button>›</button><button>»</button>
+    </div>
+    <div style="height:14px;"></div>
+    <div class="eg-pager" style="max-width:520px; border:1px solid var(--ez-border); border-radius:0 0 8px 8px;">
+      <button>«</button><button>‹</button>
+      <button>3</button><button>4</button><button class="active">5</button><button>6</button><button>7</button>
+      <button>›</button><button>»</button>
+    </div>
+    <div style="height:14px;"></div>
+    <div class="eg-pager" style="max-width:520px; border:1px solid var(--ez-border); border-radius:0 0 8px 8px;">
+      <button>«</button><button>‹</button>
+      <button>8</button><button>9</button><button class="active">10</button>
+      <button disabled>›</button><button disabled>»</button>
+    </div>
+    <pre class="dx-code">import { Pagination } from '../M000000000/shared'
+
+&lt;Pagination
+  current={currentPage}
+  total={total}
+  pageSize={pageSize}
+  onChange={setCurrentPage}
+/&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>로직</h2>
+    <pre class="dx-code">// 클라이언트 페이지네이션 (대다수 패턴)
+const totalPages = Math.ceil(items.length / pageSize)
+const pagedItems = useMemo(() =&gt;
+  items.slice((currentPage - 1) * pageSize, currentPage * pageSize),
+  [items, currentPage, pageSize]
+)
+
+// 검색/필터 후 현재 페이지가 범위 밖이면 1로
+useEffect(() =&gt; { if (currentPage &gt; totalPages) setCurrentPage(1) }, [totalPages])</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>가이드</h2>
+    <ul style="font-size:14px; line-height:1.8;">
+      <li>총건수 ≤ pageSize → 페이저 비표시 (Grid 가 자동 처리)</li>
+      <li>현재 페이지 기준 <b>±2 윈도우</b> 만 노출 + 양 끝 « ‹ › »</li>
+      <li>active 버튼은 cursor:default (이미 클릭됨)</li>
+      <li>페이지 사이즈 변경 → 첫 페이지로 리셋</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>체크박스·라디오 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">체크박스 · 라디오</div><div class="meta">accent-color: var(--ez-primary), 16×16</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>단일 (xx-yn)</h2>
+    <div class="dx-row">
+      <label class="xx-yn"><input type="checkbox" checked> QR 스캔 사용</label>
+      <label class="xx-yn"><input type="checkbox"> NFC 사용</label>
+      <label class="xx-yn"><input type="checkbox" disabled> 비활성 옵션</label>
+    </div>
+    <pre class="dx-code">&lt;label className="xx-yn"&gt;
+  &lt;input type="checkbox"
+    checked={form.qr_scan_yn === 'Y'}
+    onChange={(e) =&gt; setForm({...form, qr_scan_yn: e.target.checked ? 'Y' : 'N'})} /&gt;
+  QR 스캔 사용
+&lt;/label&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>가로 그룹 (xx-yn-row)</h2>
+    <div class="xx-yn-row">
+      <label class="xx-yn"><input type="checkbox" checked> 시설</label>
+      <label class="xx-yn"><input type="checkbox" checked> 전기</label>
+      <label class="xx-yn"><input type="checkbox"> 방재</label>
+      <label class="xx-yn"><input type="checkbox"> 보안</label>
+      <label class="xx-yn"><input type="checkbox"> 미화</label>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>라디오</h2>
+    <div class="xx-yn-row">
+      <label class="xx-yn"><input type="radio" name="prio" checked> 매우중요</label>
+      <label class="xx-yn"><input type="radio" name="prio"> 중요</label>
+      <label class="xx-yn"><input type="radio" name="prio"> 보통</label>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>그리드 행 선택용</h2>
+    <div class="eg-grid-wrap" style="max-width:520px;">
+      <div class="eg-grid-scroll">
+        <table class="eg-grid">
+          <thead>
+            <tr>
+              <th class="eg-grid-check"><input type="checkbox"></th>
+              <th>제목</th><th style="width:90px;">등록일</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>안전점검 계획</td><td>05-19</td></tr>
+            <tr class="clickable sel"><td class="eg-grid-check"><input type="checkbox" checked></td><td>위험성평가 결과</td><td>05-18</td></tr>
+            <tr class="clickable"><td class="eg-grid-check"><input type="checkbox"></td><td>협력업체 평가</td><td>05-17</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

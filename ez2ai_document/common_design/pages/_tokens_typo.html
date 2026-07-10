@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>타이포그래피 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div>
+    <div class="title">타이포그래피</div>
+    <div class="meta">Pretendard 14px 기준 - 사용자 컨펌 완료. 임의 변경 금지.</div>
+  </div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>폰트 패밀리</h2>
+    <pre class="dx-code">font-family: 'Pretendard', 'Apple SD Gothic Neo', -apple-system,
+             BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;</pre>
+    <p class="lead">Layout.css 가 body 에 적용 → 페이지/컴포넌트에서 별도 지정 불필요.</p>
+  </div>
+
+  <div class="dx-section">
+    <h2>사이즈 스케일</h2>
+    <div style="display:grid; grid-template-columns: 200px 1fr; gap: 14px 22px; align-items:center;">
+      <div style="font-size:var(--ez-fs-xs);"><code>--ez-fs-xs · 12px</code></div>
+      <div style="font-size:var(--ez-fs-xs);">셀 보조정보, 메타데이터, xx-badge</div>
+
+      <div style="font-size:var(--ez-fs-sm);"><code>--ez-fs-sm · 13px</code></div>
+      <div style="font-size:var(--ez-fs-sm);">라벨, 칩, 페이지 사이즈 셀렉터</div>
+
+      <div style="font-size:var(--ez-fs-base);"><code>--ez-fs-base · 14px</code></div>
+      <div style="font-size:var(--ez-fs-base);">본문 기본 - 입력/그리드/버튼 텍스트 (가장 자주 사용)</div>
+
+      <div style="font-size:var(--ez-fs-md); font-weight:var(--ez-fw-semibold);"><code>--ez-fs-md · 15px</code></div>
+      <div style="font-size:var(--ez-fs-md);">강조 본문, 폼 라벨, 카드 제목</div>
+
+      <div style="font-size:var(--ez-fs-lg); font-weight:var(--ez-fw-bold);"><code>--ez-fs-lg · 17px</code></div>
+      <div style="font-size:var(--ez-fs-lg);">섹션 제목, h2</div>
+
+      <div style="font-size:var(--ez-fs-xl); font-weight:var(--ez-fw-bold); color:var(--ez-primary);"><code>--ez-fs-xl · 20px</code></div>
+      <div style="font-size:var(--ez-fs-xl); color:var(--ez-primary);">페이지 h1</div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>웨이트</h2>
+    <div style="display:grid; grid-template-columns: 200px 1fr; gap: 8px 22px;">
+      <div><code>--ez-fw-regular · 400</code></div>
+      <div style="font-weight:400; font-size:14px;">본문 - 가나다라 ABCabc 12345</div>
+      <div><code>--ez-fw-medium · 500</code></div>
+      <div style="font-weight:500; font-size:14px;">강조 본문 - 가나다라 ABCabc 12345</div>
+      <div><code>--ez-fw-semibold · 600</code></div>
+      <div style="font-weight:600; font-size:14px;">라벨, 버튼, 페이지명 - 가나다라 ABCabc</div>
+      <div><code>--ez-fw-bold · 700</code></div>
+      <div style="font-weight:700; font-size:14px;">제목, 페이저 active - 가나다라 ABCabc</div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>예시</h2>
+    <div class="xx-page" style="border:1px solid var(--ez-border); border-radius:8px; padding:18px; background:var(--ez-bg-page);">
+      <div class="xx-header">
+        <h1>페이지 제목 - 20px Bold Primary</h1>
+      </div>
+      <div style="background:var(--ez-card); padding:14px; border:1px solid var(--ez-border); border-radius:6px;">
+        <h2>섹션 제목 17px</h2>
+        <p style="font-size:var(--ez-fs-base); margin:0 0 10px;">
+          본문 14px, line-height 1.5. 사용자가 가장 많이 마주치는 텍스트입니다.
+          노안 사용자가 많은 현장 업무 특성상 12px 이하로 줄이지 않습니다.
+        </p>
+        <div style="font-size:var(--ez-fs-sm); color:var(--ez-text-muted);">보조 텍스트 13px (라벨, 카운트, 시간)</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

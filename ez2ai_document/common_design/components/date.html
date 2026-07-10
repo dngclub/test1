@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>날짜·시간 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">날짜 · 시간 입력</div><div class="meta">네이티브 input[type=date/time] - 별도 라이브러리 도입 금지</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>단일</h2>
+    <div class="dx-row">
+      <input type="date" class="xx-input" style="max-width:180px;" value="2026-05-19">
+      <input type="time" class="xx-input" style="max-width:140px;" value="09:30">
+      <input type="datetime-local" class="xx-input" style="max-width:240px;" value="2026-05-19T09:30">
+    </div>
+    <p class="lead" style="margin-top:8px;">다크 모드에서도 정상 표시 (Layout.css <code>color-scheme: dark</code>).</p>
+  </div>
+
+  <div class="dx-section">
+    <h2>기간 (xx-date-range)</h2>
+    <div class="xx-search" style="max-width:520px;">
+      <div class="xx-field">
+        <label>등록일</label>
+        <div style="display:flex; align-items:center; gap:6px;">
+          <input type="date" value="2026-05-01">
+          <span style="color:var(--ez-text-muted);">~</span>
+          <input type="date" value="2026-05-31">
+        </div>
+      </div>
+    </div>
+    <pre class="dx-code">&lt;div className="xx-field"&gt;
+  &lt;label&gt;등록일&lt;/label&gt;
+  &lt;div className="xx-date-range"&gt;
+    &lt;input type="date" value={from} onChange={...} /&gt;
+    &lt;span&gt;~&lt;/span&gt;
+    &lt;input type="date" value={to} onChange={...} /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>저장 시 ISO 문자열 처리</h2>
+    <pre class="dx-code">// API 응답: "2026-05-19T00:00:00" 일 때 input 에는 첫 10자만
+&lt;input type="date" value={(form.start_date || '').slice(0,10)}
+       onChange={(e) =&gt; setForm({...form, start_date: e.target.value})} /&gt;
+
+// 표시용 헬퍼
+const fmtDate = (s) =&gt; s ? new Date(s).toLocaleDateString('ko-KR') : '-'</pre>
+  </div>
+
+</div>
+
+</body>
+</html>

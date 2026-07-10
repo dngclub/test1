@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>Master-Detail — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">샘플 · Master-Detail (점검결과조회)</div><div class="meta">좌측 문서 목록 + 우측 상세 그리드</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="xx-page" style="padding:18px 22px; min-height:calc(100vh - 60px); display:flex; flex-direction:column;">
+
+  <div class="xx-header">
+    <h1>점검결과조회</h1>
+    <div class="xx-header-actions">
+      <button class="eg-btn eg-btn-default">🔄 새로고침</button>
+      <button class="eg-btn eg-btn-default">📊 엑셀</button>
+    </div>
+  </div>
+
+  <div class="xx-search">
+    <div class="xx-field"><label>점검일</label>
+      <div style="display:flex; align-items:center; gap:6px;">
+        <input type="date" value="2026-05-01"><span style="color:var(--ez-text-muted);">~</span><input type="date" value="2026-05-19">
+      </div>
+    </div>
+    <div class="xx-field"><label>점검자</label><input type="text" placeholder="이름"></div>
+    <div class="xx-search-actions">
+      <button class="eg-btn eg-btn-primary">🔍 검색</button>
+      <button class="eg-btn eg-btn-default">초기화</button>
+    </div>
+  </div>
+
+  <div class="xx-split" style="margin-top:10px;">
+    <!-- 좌: 점검문서 목록 -->
+    <section class="xx-pane">
+      <div class="xx-pane-head">
+        <span class="xx-pane-title">점검문서</span>
+        <span class="xx-pane-count">총 84건</span>
+      </div>
+      <div class="eg-grid-scroll">
+        <table class="eg-grid">
+          <thead><tr><th style="width:120px;">문서번호</th><th>점검명</th><th style="width:90px;">점검일</th></tr></thead>
+          <tbody>
+            <tr class="clickable"><td>CHK-2026-084</td><td>공조기 정기점검</td><td>05-19</td></tr>
+            <tr class="clickable xx-row-active"><td>CHK-2026-083</td><td>비상발전기 월간점검</td><td>05-18</td></tr>
+            <tr class="clickable"><td>CHK-2026-082</td><td>스프링클러 점검</td><td>05-17</td></tr>
+            <tr class="clickable"><td>CHK-2026-081</td><td>방화셔터 점검</td><td>05-16</td></tr>
+            <tr class="clickable"><td>CHK-2026-080</td><td>옥상 안전난간 점검</td><td>05-15</td></tr>
+            <tr class="clickable"><td>CHK-2026-079</td><td>전기실 환기 점검</td><td>05-15</td></tr>
+            <tr class="clickable"><td>CHK-2026-078</td><td>외부 조명 점검</td><td>05-14</td></tr>
+            <tr class="clickable"><td>CHK-2026-077</td><td>주차장 침수 대응</td><td>05-14</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 우: 점검결과 상세 -->
+    <section class="xx-pane">
+      <div class="xx-pane-head">
+        <span class="xx-pane-title">점검결과</span>
+        <span class="xx-pane-count">[12]</span>
+      </div>
+      <div class="xx-active-info">
+        <span><b>문서번호</b> CHK-2026-083</span>
+        <span><b>점검명</b> 비상발전기 월간점검</span>
+        <span><b>점검일</b> 2026-05-18 14:00</span>
+        <span><b>점검자</b> 김영희</span>
+      </div>
+      <div class="eg-grid-scroll">
+        <table class="eg-grid">
+          <thead><tr><th style="width:50px;">#</th><th>점검항목</th><th style="width:80px;">결과</th><th style="width:100px;">조치</th><th>비고</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>외관 검사 (이상유무)</td><td><span class="xx-pill is-success">정상</span></td><td>-</td><td>-</td></tr>
+            <tr><td>2</td><td>오일 양 확인</td><td><span class="xx-pill is-success">정상</span></td><td>-</td><td>풀 상태</td></tr>
+            <tr><td>3</td><td>오일 누유 여부</td><td><span class="xx-pill is-danger">이상</span></td><td>긴급조치</td><td>드레인 부위 미세 누유 - 가스켓 교체 필요</td></tr>
+            <tr><td>4</td><td>냉각수 양</td><td><span class="xx-pill is-success">정상</span></td><td>-</td><td>-</td></tr>
+            <tr><td>5</td><td>축전지 전압</td><td><span class="xx-pill is-warning">주의</span></td><td>경과관찰</td><td>12.4V (정상 12.6V 이상)</td></tr>
+            <tr><td>6</td><td>충전기 정상 동작</td><td><span class="xx-pill is-success">정상</span></td><td>-</td><td>-</td></tr>
+            <tr><td>7</td><td>제어반 인디케이터</td><td><span class="xx-pill is-success">정상</span></td><td>-</td><td>-</td></tr>
+            <tr><td>8</td><td>비상 정지 버튼</td><td><span class="xx-pill is-success">정상</span></td><td>-</td><td>-</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
+
+</body>
+</html>

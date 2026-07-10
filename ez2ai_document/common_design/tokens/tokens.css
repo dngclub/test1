@@ -1,0 +1,189 @@
+/* ============================================================================
+ * ez2AI 공통 시스템 — 디자인 토큰 (라이트 + 다크)
+ *
+ *   출처: web/src/M000000000/shell/Layout.css (SSOT) — 동기화 2026-05-20.
+ *   본 파일은 common_design HTML 쇼케이스 전용 사본이다.
+ *   토큰을 변경할 때는 Layout.css 를 먼저 수정하고 본 파일을 동기화한다.
+ *
+ *   규칙
+ *   - 색·간격·폰트는 반드시 var(--ez-*) 로 사용. hex 직접 사용 금지.
+ *   - 새 토큰이 필요하면 토큰을 먼저 추가하고 컴포넌트에서 사용.
+ *   - 브랜드 실 디자인 추출 (document/M000000000/brand_design/*.html) 기반.
+ * ========================================================================== */
+
+:root {
+  /* ── 배경/표면 ── */
+  --ez-bg: #f3f4f6;
+  --ez-bg-page: #f3f4f6;
+  --ez-bg-soft: #f8f9fa;
+  --ez-card: #ffffff;
+  --ez-card-soft: #f9fafb;
+  --ez-row-hover: #f3f7fc;
+  --ez-row-selected: #eaf2fb;
+  --ez-row-selected-hover: #d6e6f7;
+  --ez-row-odd: #ffffff;
+  --ez-row-even: #fafbfc;
+  --ez-tab-active-bg: #ffffff;
+  --ez-tab-hover-bg: #eef2f6;
+  --ez-overlay: rgba(15, 23, 42, 0.45);
+
+  /* ── 텍스트 ── */
+  --ez-text: #212529;
+  --ez-text-strong: #1a252f;
+  --ez-text-muted: #6c757d;
+  --ez-text-soft: #7a7f99;
+  --ez-text-on-dark: #ffffff;
+
+  /* ── 경계 ── */
+  --ez-border: #dcdde4;
+  --ez-border-soft: #e9ecef;
+  --ez-border-strong: #c5c8d0;
+  --ez-border-dashed: #cbd5e1;
+
+  /* ── 주색상 (Brand primary = #2267b6, dark navy = #1a3868) ── */
+  --ez-primary: #2267b6;
+  --ez-primary-hover: #1a558e;
+  --ez-primary-active: #16467a;
+  --ez-primary-text: #ffffff;
+  --ez-primary-tint: #eaf2fb;
+  --ez-primary-tint-strong: #d3e4f7;
+  --ez-primary-focus: rgba(34, 103, 182, 0.18);
+  --ez-link: #0d6efd;
+  --ez-link-hover: #0a58ca;
+
+  /* ── 다크 네이비 (사이드바·헤더 그라데이션용) ── */
+  --ez-navy: #1a3868;
+  --ez-navy-strong: #0f2645;
+  --ez-navy-soft: #2c466e;
+
+  /* ── 카테고리 (사이드바 카테고리 탭) ── */
+  --ez-cate-fm: #2267b6;
+  --ez-cate-safety: #148b0d;
+  --ez-cate-patrol: #8e44ad;
+
+  /* ── 상태 ── */
+  --ez-success: #28a745;
+  --ez-success-strong: #198754;
+  --ez-success-bg: #e9f7ee;
+  --ez-success-border: #b6e0c2;
+  --ez-warning: #ffc107;
+  --ez-warning-text: #856404;
+  --ez-warning-bg: #fff8e1;
+  --ez-warning-border: #ffe69c;
+  --ez-danger: #dc3545;
+  --ez-danger-hover: #c82333;
+  --ez-danger-text: #842029;
+  --ez-danger-bg: #fbe9eb;
+  --ez-danger-border: #f5c2c7;
+  --ez-info: #17a2b8;
+
+  /* ── 폰트 (Pretendard) ── */
+  --ez-font: 'Pretendard', 'Pretendard-Regular', -apple-system, BlinkMacSystemFont,
+             'Apple SD Gothic Neo', 'Segoe UI', Roboto, sans-serif;
+  --ez-font-medium: 'Pretendard-Medium', var(--ez-font);
+  --ez-font-bold: 'Pretendard-Bold', var(--ez-font);
+
+  /* ── 글자 크기 (본문 14px) ── */
+  --ez-fs-xs: 12px;
+  --ez-fs-sm: 13px;
+  --ez-fs-md: 14px;
+  --ez-fs-lg: 16px;
+  --ez-fs-xl: 18px;
+  --ez-fs-2xl: 21px;
+
+  /* ── 반경 ── */
+  --ez-radius-sm: 3px;
+  --ez-radius: 4px;
+  --ez-radius-md: 8px;
+  --ez-radius-lg: 10px;
+
+  /* ── 그림자 ── */
+  --ez-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --ez-shadow-md: 0 0 3px rgba(0, 0, 0, 0.14), 0 6px 10px rgba(0, 0, 0, 0.04);
+  --ez-shadow-lg: 4px 4px 15px rgba(0, 0, 0, 0.2);
+  --ez-shadow-focus: 0 0 0 2px var(--ez-primary-focus);
+
+  /* ── 폰트 패밀리/두께 (core.css 호환 별칭) ── */
+  --ez-font-sans: var(--ez-font);
+  --ez-font-mono: 'D2Coding', 'JetBrains Mono', Consolas, Monaco, 'Courier New', monospace;
+  --ez-fw-medium: 500;
+  --ez-fw-semibold: 600;
+  --ez-fw-bold: 700;
+
+  /* ── 본문 크기 별칭 (= --ez-fs-md, 14px) ── */
+  --ez-fs-base: var(--ez-fs-md);
+
+  /* ── 컨트롤 규격 (버튼·입력·셀렉트 = 36px / 본문 14px — 디자인 원칙 3) ── */
+  --ez-ctl-h: 36px;
+  --ez-ctl-h-sm: 30px;
+  --ez-ctl-px: 10px;
+  --ez-ctl-radius: var(--ez-radius);
+
+  /* ── 그리드 행 높이 (행 40px / 헤더 42px — 디자인 원칙 3) ── */
+  --ez-row-h: 40px;
+  --ez-row-h-head: 42px;
+}
+
+html.dark {
+  --ez-bg: #0d1117;
+  --ez-bg-page: #0d1117;
+  --ez-bg-soft: #161b22;
+  --ez-card: #161b22;
+  --ez-card-soft: #1c2128;
+  --ez-row-hover: #1f242c;
+  --ez-row-selected: #1f3a5f;
+  --ez-row-selected-hover: #2b4d7a;
+  --ez-row-odd: #161b22;
+  --ez-row-even: #1c2128;
+  --ez-tab-active-bg: #161b22;
+  --ez-tab-hover-bg: #21262d;
+  --ez-overlay: rgba(0, 0, 0, 0.65);
+
+  --ez-text: #e6edf3;
+  --ez-text-strong: #f0f6fc;
+  --ez-text-muted: #8b949e;
+  --ez-text-soft: #6e7681;
+  --ez-text-on-dark: #f0f6fc;
+
+  --ez-border: #30363d;
+  --ez-border-soft: #21262d;
+  --ez-border-strong: #484f58;
+  --ez-border-dashed: #484f58;
+
+  --ez-primary: #58a6ff;
+  --ez-primary-hover: #79b8ff;
+  --ez-primary-active: #4a8edb;
+  --ez-primary-text: #0d1117;
+  --ez-primary-tint: #1f3a5f;
+  --ez-primary-tint-strong: #2b4d7a;
+  --ez-primary-focus: rgba(88, 166, 255, 0.22);
+  --ez-link: #79b8ff;
+  --ez-link-hover: #a6d2ff;
+
+  --ez-navy: #0f1c33;
+  --ez-navy-strong: #07101e;
+  --ez-navy-soft: #1d2f4f;
+
+  --ez-cate-fm: #58a6ff;
+  --ez-cate-safety: #3fb950;
+  --ez-cate-patrol: #c186e6;
+
+  --ez-success: #3fb950;
+  --ez-success-strong: #56d364;
+  --ez-success-bg: #1c3326;
+  --ez-success-border: #2e5e3a;
+  --ez-warning: #d29922;
+  --ez-warning-text: #e3b341;
+  --ez-warning-bg: #3d2e0a;
+  --ez-warning-border: #5a4a14;
+  --ez-danger: #f85149;
+  --ez-danger-hover: #ff7b72;
+  --ez-danger-text: #ff7b72;
+  --ez-danger-bg: #3d1a1a;
+  --ez-danger-border: #6a2828;
+  --ez-info: #58a6ff;
+
+  --ez-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.25);
+  --ez-shadow-md: 0 1px 3px rgba(0, 0, 0, 0.5), 0 6px 10px rgba(0, 0, 0, 0.3);
+  --ez-shadow-lg: 4px 4px 18px rgba(0, 0, 0, 0.6);
+}

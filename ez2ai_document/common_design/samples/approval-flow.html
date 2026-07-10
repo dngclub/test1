@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>결재 진행 흐름 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+  <style>
+    .ap-flow { display:flex; align-items:stretch; gap:8px; padding:18px 0; overflow-x:auto; }
+    .ap-step { min-width:140px; flex:0 0 140px; background:var(--ez-card); border:1px solid var(--ez-border); border-radius:8px; padding:10px 12px; }
+    .ap-step.is-done   { border-color:var(--ez-success); background:var(--ez-success-bg); }
+    .ap-step.is-active { border-color:var(--ez-primary); background:var(--ez-primary-tint); box-shadow:0 0 0 2px var(--ez-primary-focus); }
+    .ap-step .role { font-size:11px; color:var(--ez-text-muted); }
+    .ap-step .name { font-size:14px; font-weight:600; color:var(--ez-text-strong); margin-top:2px; }
+    .ap-step .status { font-size:11px; margin-top:6px; }
+    .ap-step.is-done .status { color:var(--ez-success-strong); }
+    .ap-step.is-active .status { color:var(--ez-primary); }
+    .ap-arrow { display:flex; align-items:center; color:var(--ez-text-soft); font-size:18px; }
+  </style>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">샘플 · 결재 진행 흐름 (작업허가신청)</div><div class="meta">결재 문서 상세 화면 표준 레이아웃</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="xx-page" style="padding:18px 22px;">
+
+  <div class="xx-header">
+    <h1>작업허가신청 - PER-2026-0125</h1>
+    <div class="xx-header-actions">
+      <span class="xx-pill is-warning">결재중 (3/5)</span>
+      <button class="eg-btn eg-btn-default">📊 출력</button>
+    </div>
+  </div>
+
+  <!-- 결재 진행 -->
+  <div class="dx-section">
+    <h2>결재 진행</h2>
+    <div class="ap-flow">
+      <div class="ap-step is-done"><div class="role">기안자</div><div class="name">홍길동</div><div class="status">✓ 상신 · 05-19 09:12</div></div>
+      <div class="ap-arrow">›</div>
+      <div class="ap-step is-done"><div class="role">팀장</div><div class="name">김영희</div><div class="status">✓ 승인 · 05-19 10:34</div></div>
+      <div class="ap-arrow">›</div>
+      <div class="ap-step is-active"><div class="role">실장</div><div class="name">이철수</div><div class="status">⏳ 결재 대기 (귀하)</div></div>
+      <div class="ap-arrow">›</div>
+      <div class="ap-step"><div class="role">안전책임자</div><div class="name">박지수</div><div class="status">대기 중</div></div>
+      <div class="ap-arrow">›</div>
+      <div class="ap-step"><div class="role">대표이사</div><div class="name">최민호</div><div class="status">대기 중</div></div>
+    </div>
+  </div>
+
+  <!-- 내용 -->
+  <div class="dx-section">
+    <h2>신청 내용</h2>
+    <div class="xx-form-grid" style="grid-template-columns: 1fr 1fr 1fr 1fr;">
+      <div class="eg-form-row"><label>작업유형</label><div class="eg-form-view">고소작업</div></div>
+      <div class="eg-form-row"><label>작업장소</label><div class="eg-form-view">본관 2층 외벽</div></div>
+      <div class="eg-form-row"><label>작업기간</label><div class="eg-form-view">05-22 ~ 05-24</div></div>
+      <div class="eg-form-row"><label>인원</label><div class="eg-form-view">4 명</div></div>
+      <div class="eg-form-row"><label>위험성평가</label><div class="eg-form-view">RA-2026-0042</div></div>
+      <div class="eg-form-row"><label>점수</label><div class="eg-form-view"><span class="xx-pill is-warning">9 / 25 (보통)</span></div></div>
+      <div class="eg-form-row"><label>안전 조치</label><div class="eg-form-view">안전대, 안전모, 안전망 설치</div></div>
+      <div class="eg-form-row"><label>관리자</label><div class="eg-form-view">홍길동 (운영팀)</div></div>
+    </div>
+  </div>
+
+  <!-- 코멘트 -->
+  <div class="dx-section">
+    <h2>결재 코멘트</h2>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <div style="padding:10px 14px; background:var(--ez-success-bg); border-left:3px solid var(--ez-success); border-radius:0 6px 6px 0;">
+        <div style="font-size:13px; font-weight:600;">김영희 (팀장) · 승인 · 05-19 10:34</div>
+        <div style="font-size:13px; margin-top:4px;">안전조치 충분합니다. 작업 전 TBM 필수.</div>
+      </div>
+      <div style="padding:10px 14px; background:var(--ez-card-soft); border-left:3px solid var(--ez-border); border-radius:0 6px 6px 0;">
+        <div style="font-size:13px; font-weight:600;">홍길동 (기안자) · 상신 · 05-19 09:12</div>
+        <div style="font-size:13px; margin-top:4px;">옥상 누수 발견되어 외벽 보수 작업 필요합니다.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 결재 액션 -->
+  <div class="dx-section">
+    <h2>결재</h2>
+    <div class="eg-form-row">
+      <label>의견</label>
+      <div class="eg-form-control"><textarea placeholder="결재 의견을 입력하세요 (선택)"></textarea></div>
+    </div>
+    <div class="dx-row" style="justify-content:flex-end; gap:8px;">
+      <button class="eg-btn eg-btn-danger">반려</button>
+      <button class="eg-btn eg-btn-warning">보류</button>
+      <button class="eg-btn eg-btn-primary">승인</button>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

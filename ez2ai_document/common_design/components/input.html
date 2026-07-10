@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>입력 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">입력 · text / search / number</div><div class="meta">표준 36px, focus 시 primary border + 2px ring</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>기본 (xx-input)</h2>
+    <div class="dx-row">
+      <input type="text" class="xx-input" placeholder="이름 입력" style="max-width:280px;">
+      <input type="text" class="xx-input" value="홍길동" style="max-width:280px;">
+      <input type="text" class="xx-input" value="비활성" disabled style="max-width:280px;">
+    </div>
+    <pre class="dx-code">&lt;input type="text" className="xx-input" value={form.name}
+       onChange={(e) =&gt; setForm({...form, name: e.target.value})} /&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>검색바 안에서 (xx-field)</h2>
+    <div class="xx-search">
+      <div class="xx-field">
+        <label>제목</label>
+        <input type="text" placeholder="키워드">
+      </div>
+      <div class="xx-field">
+        <label>등록일</label>
+        <input type="date">
+      </div>
+      <div class="xx-search-actions">
+        <button class="eg-btn eg-btn-primary">🔍 검색</button>
+        <button class="eg-btn eg-btn-default">초기화</button>
+      </div>
+    </div>
+    <pre class="dx-code">&lt;div className="xx-search"&gt;
+  &lt;div className="xx-field"&gt;
+    &lt;label&gt;제목&lt;/label&gt;
+    &lt;input type="text" value={q} onChange={...} /&gt;
+  &lt;/div&gt;
+  &lt;div className="xx-search-actions"&gt;
+    &lt;button className="eg-btn eg-btn-primary"&gt;🔍 검색&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>숫자</h2>
+    <div class="dx-row">
+      <input type="number" class="xx-input" value="123" style="width:120px;">
+      <input type="number" class="xx-input" placeholder="0" style="width:120px;" min="0" step="1">
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>모달 폼 내부 (eg-form-row)</h2>
+    <div class="dx-row" style="display:block;">
+      <div class="eg-form-row">
+        <label>제목<span class="req">*</span></label>
+        <div class="eg-form-control">
+          <input type="text" value="2026 상반기 안전점검 계획">
+        </div>
+      </div>
+      <div class="eg-form-row">
+        <label>비고</label>
+        <div class="eg-form-control">
+          <textarea>점검 항목 별 책임자 배정 필요.</textarea>
+        </div>
+      </div>
+    </div>
+    <pre class="dx-code">&lt;div className="eg-form-row"&gt;
+  &lt;label&gt;제목&lt;span className="req"&gt;*&lt;/span&gt;&lt;/label&gt;
+  &lt;div className="eg-form-control"&gt;
+    &lt;input type="text" value={form.title} onChange={...} /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>focus / 에러 상태</h2>
+    <div class="dx-row">
+      <input type="text" class="xx-input" value="포커스 상태" style="max-width:280px; border-color:var(--ez-primary); box-shadow: 0 0 0 2px var(--ez-primary-focus);">
+      <input type="text" class="xx-input" value="에러 상태" style="max-width:280px; border-color:var(--ez-danger); box-shadow: 0 0 0 2px rgba(220,38,38,0.15);">
+    </div>
+    <p class="lead">에러 상태는 별도 클래스 대신 인라인 style 또는 페이지 prefix 의 modifier 클래스로 적용 (예: <code>an-input is-error</code>).</p>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>스피너·프로그레스 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">스피너 · 프로그레스</div><div class="meta">로딩/진행률 표시. Grid 는 자체 로딩 텍스트 사용 (xx-loading)</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>스피너 (xx-spinner)</h2>
+    <div class="dx-row">
+      <span class="xx-spinner"></span>
+      <span class="xx-spinner lg"></span>
+      <button class="eg-btn eg-btn-primary">
+        <span class="xx-spinner" style="border-color:rgba(255,255,255,0.3); border-top-color:#fff;"></span>
+        처리 중…
+      </button>
+    </div>
+    <pre class="dx-code">&lt;span className="xx-spinner" /&gt;       {/* 16px */}
+&lt;span className="xx-spinner lg" /&gt;    {/* 28px */}</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>프로그레스 (xx-progress)</h2>
+    <div style="display:flex; flex-direction:column; gap:14px; max-width:520px;">
+      <div>
+        <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;"><span>업로드 진행률</span><span>35%</span></div>
+        <div class="xx-progress"><div class="xx-progress-fill" style="width:35%;"></div></div>
+      </div>
+      <div>
+        <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;"><span>점검 완료율</span><span>78%</span></div>
+        <div class="xx-progress"><div class="xx-progress-fill" style="width:78%; background:var(--ez-success);"></div></div>
+      </div>
+      <div>
+        <div style="display:flex; justify-content:space-between; font-size:13px; margin-bottom:4px;"><span>위험 등급</span><span style="color:var(--ez-danger);">매우 높음</span></div>
+        <div class="xx-progress"><div class="xx-progress-fill" style="width:95%; background:var(--ez-danger);"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>그리드 로딩</h2>
+    <div class="eg-grid-wrap" style="max-width:640px;">
+      <div class="eg-grid-head">
+        <div class="eg-grid-head-left"><span class="eg-loading">조회 중…</span></div>
+      </div>
+      <div class="eg-grid-scroll" style="min-height:120px; display:flex; align-items:center; justify-content:center;">
+        <span class="xx-spinner lg"></span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

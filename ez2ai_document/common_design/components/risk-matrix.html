@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>위험성평가 매트릭스 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+  <style>
+    .rm-grid {
+      display:grid;
+      grid-template-columns: 80px repeat(5, 1fr);
+      gap: 4px;
+      max-width: 520px;
+    }
+    .rm-cell {
+      height: 56px;
+      display:flex; align-items:center; justify-content:center;
+      font-size: 13px; font-weight:600;
+      border-radius:4px;
+      cursor:pointer;
+    }
+    .rm-axis { background:transparent; color:var(--ez-text-muted); font-weight:500; }
+    .rm-cell.rm-1 { background:#dcfce7; color:#166534; }   /* 1-2 매우낮음 */
+    .rm-cell.rm-2 { background:#fef3c7; color:#92400e; }   /* 3-4 낮음 */
+    .rm-cell.rm-3 { background:#fde68a; color:#78350f; }   /* 6-9 보통 */
+    .rm-cell.rm-4 { background:#fecaca; color:#991b1b; }   /* 10-15 높음 */
+    .rm-cell.rm-5 { background:#dc2626; color:#fff; }      /* 16-25 매우높음 */
+    .rm-cell.is-selected { outline: 3px solid var(--ez-primary); outline-offset: 1px; }
+  </style>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">위험성평가 매트릭스 · 5×5 빈도·강도</div><div class="meta">eval_method_cd=3 (빈도·강도 5*5) 입력 UI</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>5×5 매트릭스 (빈도 × 강도)</h2>
+    <p class="lead">행 = 강도 (1: 경미 → 5: 치명적), 열 = 빈도 (1: 극히드뭄 → 5: 매우자주).
+      셀의 숫자는 위험 점수, 색은 위험 등급.</p>
+
+    <div class="rm-grid">
+      <div class="rm-cell rm-axis">강도↓ 빈도→</div>
+      <div class="rm-cell rm-axis">1 (드뭄)</div>
+      <div class="rm-cell rm-axis">2</div>
+      <div class="rm-cell rm-axis">3</div>
+      <div class="rm-cell rm-axis">4</div>
+      <div class="rm-cell rm-axis">5 (자주)</div>
+
+      <div class="rm-cell rm-axis">5 (치명)</div>
+      <div class="rm-cell rm-3">5</div>
+      <div class="rm-cell rm-4">10</div>
+      <div class="rm-cell rm-4">15</div>
+      <div class="rm-cell rm-5">20</div>
+      <div class="rm-cell rm-5">25</div>
+
+      <div class="rm-cell rm-axis">4</div>
+      <div class="rm-cell rm-2">4</div>
+      <div class="rm-cell rm-3">8</div>
+      <div class="rm-cell rm-3">12</div>
+      <div class="rm-cell rm-4">16</div>
+      <div class="rm-cell rm-5">20</div>
+
+      <div class="rm-cell rm-axis">3</div>
+      <div class="rm-cell rm-2">3</div>
+      <div class="rm-cell rm-2">6</div>
+      <div class="rm-cell rm-3 is-selected">9</div>
+      <div class="rm-cell rm-4">12</div>
+      <div class="rm-cell rm-4">15</div>
+
+      <div class="rm-cell rm-axis">2</div>
+      <div class="rm-cell rm-1">2</div>
+      <div class="rm-cell rm-2">4</div>
+      <div class="rm-cell rm-2">6</div>
+      <div class="rm-cell rm-3">8</div>
+      <div class="rm-cell rm-3">10</div>
+
+      <div class="rm-cell rm-axis">1 (경미)</div>
+      <div class="rm-cell rm-1">1</div>
+      <div class="rm-cell rm-1">2</div>
+      <div class="rm-cell rm-2">3</div>
+      <div class="rm-cell rm-2">4</div>
+      <div class="rm-cell rm-3">5</div>
+    </div>
+
+    <div class="dx-row" style="margin-top:14px; gap:18px;">
+      <div><span style="display:inline-block; width:14px; height:14px; background:#dcfce7; border-radius:3px; vertical-align:middle;"></span> 1~2 매우낮음</div>
+      <div><span style="display:inline-block; width:14px; height:14px; background:#fef3c7; border-radius:3px; vertical-align:middle;"></span> 3~4 낮음</div>
+      <div><span style="display:inline-block; width:14px; height:14px; background:#fde68a; border-radius:3px; vertical-align:middle;"></span> 6~9 보통</div>
+      <div><span style="display:inline-block; width:14px; height:14px; background:#fecaca; border-radius:3px; vertical-align:middle;"></span> 10~15 높음</div>
+      <div><span style="display:inline-block; width:14px; height:14px; background:#dc2626; border-radius:3px; vertical-align:middle;"></span> 16~25 매우높음</div>
+    </div>
+
+    <pre class="dx-code">const score = severity * frequency
+const grade = score &lt;= 2 ? '매우낮음'
+            : score &lt;= 4 ? '낮음'
+            : score &lt;= 9 ? '보통'
+            : score &lt;= 15 ? '높음' : '매우높음'
+
+&lt;div className="rm-grid"&gt;
+  {[5,4,3,2,1].map(s =&gt; [
+    &lt;div className="rm-cell rm-axis"&gt;{s}&lt;/div&gt;,
+    ...[1,2,3,4,5].map(f =&gt; (
+      &lt;div key={`${s}-${f}`}
+           className={`rm-cell rm-${gradeNum(s*f)} ${form.s===s &amp;&amp; form.f===f ? 'is-selected' : ''}`}
+           onClick={() =&gt; setForm({...form, severity:s, frequency:f})}&gt;
+        {s * f}
+      &lt;/div&gt;
+    ))
+  ])}
+&lt;/div&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>가이드</h2>
+    <ul style="font-size:14px; line-height:1.8;">
+      <li>3×3, 5×4 도 동일한 색 토큰으로 변형. <code>eval_method_cd</code> 에 따라 행/열 수 조정.</li>
+      <li>선택 셀은 outline + offset 으로 강조 (border 채우면 색이 깨짐)</li>
+      <li>모바일에서는 옆 스크롤 또는 셀 크기 자동 축소</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>

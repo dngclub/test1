@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>트리 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">트리 · xx-tree</div><div class="meta">부서/메뉴/지점 계층 표시. 외부 라이브러리 미사용.</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>기본</h2>
+    <div style="max-width:340px; background:var(--ez-card); border:1px solid var(--ez-border); border-radius:8px;">
+      <div class="xx-tree" style="padding:8px;">
+        <div class="xx-tree-node"><span class="xx-tree-caret is-open">▶</span><span>본사</span></div>
+        <div class="xx-tree-children">
+          <div class="xx-tree-node"><span class="xx-tree-caret is-open">▶</span><span>운영팀</span></div>
+          <div class="xx-tree-children">
+            <div class="xx-tree-node is-active"><span style="width:14px;"></span><span>안전기획팀</span></div>
+            <div class="xx-tree-node"><span style="width:14px;"></span><span>보건위생팀</span></div>
+            <div class="xx-tree-node"><span style="width:14px;"></span><span>방재팀</span></div>
+          </div>
+          <div class="xx-tree-node"><span class="xx-tree-caret">▶</span><span>경영지원실</span></div>
+          <div class="xx-tree-node"><span class="xx-tree-caret">▶</span><span>시설관리실</span></div>
+        </div>
+        <div class="xx-tree-node"><span class="xx-tree-caret">▶</span><span>제 1 공장</span></div>
+        <div class="xx-tree-node"><span class="xx-tree-caret">▶</span><span>제 2 공장</span></div>
+        <div class="xx-tree-node"><span class="xx-tree-caret">▶</span><span>물류센터</span></div>
+      </div>
+    </div>
+    <pre class="dx-code">function TreeNode({ node, active, onSelect }) {
+  const [open, setOpen] = useState(true)
+  return (
+    &lt;&gt;
+      &lt;div className={`xx-tree-node ${active === node.id ? 'is-active' : ''}`}
+           onClick={() =&gt; { setOpen(!open); onSelect(node) }}&gt;
+        {node.children?.length
+          ? &lt;span className={`xx-tree-caret ${open ? 'is-open' : ''}`}&gt;▶&lt;/span&gt;
+          : &lt;span style={{width:14}} /&gt;}
+        &lt;span&gt;{node.name}&lt;/span&gt;
+      &lt;/div&gt;
+      {open &amp;&amp; node.children &amp;&amp;
+        &lt;div className="xx-tree-children"&gt;
+          {node.children.map(c =&gt; &lt;TreeNode key={c.id} node={c} ... /&gt;)}
+        &lt;/div&gt;}
+    &lt;/&gt;
+  )
+}</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>좌(트리) + 우(목록) 패턴</h2>
+    <p class="lead">부서 트리에서 선택 → 해당 부서의 사용자 목록 표시. Master-Detail 변형.</p>
+    <div style="display:grid; grid-template-columns: 240px 1fr; gap:14px; max-width:920px;">
+      <div style="background:var(--ez-card); border:1px solid var(--ez-border); border-radius:8px;">
+        <div style="padding:10px 12px; background:var(--ez-card-soft); border-bottom:1px solid var(--ez-border); font-size:13px; font-weight:600;">부서</div>
+        <div class="xx-tree" style="padding:6px;">
+          <div class="xx-tree-node"><span class="xx-tree-caret is-open">▶</span>본사</div>
+          <div class="xx-tree-children">
+            <div class="xx-tree-node is-active"><span style="width:14px;"></span>운영팀 (12)</div>
+            <div class="xx-tree-node"><span style="width:14px;"></span>경영지원실 (8)</div>
+            <div class="xx-tree-node"><span style="width:14px;"></span>시설관리실 (5)</div>
+          </div>
+        </div>
+      </div>
+      <div class="eg-grid-wrap">
+        <div class="eg-grid-head"><div class="eg-grid-head-left">운영팀 · 12 명</div></div>
+        <div class="eg-grid-scroll">
+          <table class="eg-grid">
+            <thead><tr><th style="width:90px;">사번</th><th>이름</th><th style="width:120px;">직급</th><th style="width:120px;">전화</th></tr></thead>
+            <tbody>
+              <tr class="clickable"><td>EMP001</td><td>홍길동</td><td>차장</td><td>010-1111-1111</td></tr>
+              <tr class="clickable"><td>EMP002</td><td>김영희</td><td>과장</td><td>010-2222-2222</td></tr>
+              <tr class="clickable"><td>EMP003</td><td>이철수</td><td>대리</td><td>010-3333-3333</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

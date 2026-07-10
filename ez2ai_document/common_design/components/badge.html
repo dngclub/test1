@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>배지·칩·도트 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">배지 · 칩 · 도트</div><div class="meta">상태/카테고리/카운트 표시 - xx-pill / xx-badge / xx-dot</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>Pill (xx-pill)</h2>
+    <p class="lead">그리드 셀에서 코드 라벨, 카테고리, 상태를 표현. 보통 카운트가 5 가지 이내일 때.</p>
+    <div class="dx-row">
+      <span class="xx-pill">기본</span>
+      <span class="xx-pill is-primary">정보</span>
+      <span class="xx-pill is-success">완료</span>
+      <span class="xx-pill is-warning">진행</span>
+      <span class="xx-pill is-danger">지연</span>
+      <span class="xx-pill is-info">접수</span>
+      <span class="xx-pill is-muted">취소</span>
+    </div>
+    <pre class="dx-code">&lt;span className="xx-pill is-success"&gt;완료&lt;/span&gt;
+&lt;span className={`xx-pill ${row.status === 'D' ? 'is-success' : 'is-warning'}`}&gt;
+  {statusLabel(row.status)}
+&lt;/span&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>그리드 셀에서</h2>
+    <div class="eg-grid-wrap" style="max-width:640px;">
+      <div class="eg-grid-scroll">
+        <table class="eg-grid">
+          <thead><tr><th>오더번호</th><th>제목</th><th style="width:90px;">상태</th><th style="width:80px;">중요도</th></tr></thead>
+          <tbody>
+            <tr class="clickable"><td>WO-001</td><td>공조기 #02 정기점검</td><td><span class="xx-pill is-success">완료</span></td><td><span class="xx-pill is-warning">중요</span></td></tr>
+            <tr class="clickable"><td>WO-002</td><td>비상발전기 누유</td><td><span class="xx-pill is-warning">진행</span></td><td><span class="xx-pill is-danger">매우중요</span></td></tr>
+            <tr class="clickable"><td>WO-003</td><td>외부 조명 LED 교체</td><td><span class="xx-pill is-info">접수</span></td><td><span class="xx-pill">보통</span></td></tr>
+            <tr class="clickable"><td>WO-004</td><td>스프링클러 압력 점검</td><td><span class="xx-pill is-danger">지연</span></td><td><span class="xx-pill is-warning">중요</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>Badge (xx-badge) - 카운트</h2>
+    <div class="dx-row">
+      <button class="eg-btn eg-btn-default" style="position:relative;">
+        🔔 알림
+        <span class="xx-badge" style="position:absolute; top:-6px; right:-6px;">12</span>
+      </button>
+      <button class="eg-btn eg-btn-default" style="position:relative;">
+        📨 결재함
+        <span class="xx-badge" style="position:absolute; top:-6px; right:-6px; background:var(--ez-warning);">3</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>Dot (xx-dot) - 상태 도트 + 텍스트</h2>
+    <div class="dx-row" style="display:block;">
+      <div style="font-size:13px; padding:4px 0;"><span class="xx-dot is-success"></span> 서버 정상</div>
+      <div style="font-size:13px; padding:4px 0;"><span class="xx-dot is-warning"></span> 서버 응답 지연</div>
+      <div style="font-size:13px; padding:4px 0;"><span class="xx-dot is-danger"></span> 서버 다운</div>
+      <div style="font-size:13px; padding:4px 0;"><span class="xx-dot is-info"></span> 시스템 점검 중</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

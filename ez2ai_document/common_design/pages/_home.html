@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>홈 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div>
+    <div class="title">홈 / 사용 가이드</div>
+    <div class="meta">왼쪽 트리에서 컴포넌트를 선택하세요. ☽ Dark 버튼으로 라이트/다크 토글 가능.</div>
+  </div>
+  <div class="actions">
+    <button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button>
+  </div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>이 디자인 시스템에 대하여</h2>
+    <p class="lead">
+      ez2AI 공통 시스템 의 모든 화면이 따라야 할 색·폰트·간격·컴포넌트
+      기준을 한 곳에 모은 정적 HTML 쇼케이스입니다. 실제 React 화면 (web/src/M000000XX/)
+      과 본 쇼케이스는 동일한 디자인 토큰 (<code>--ez-*</code>) 과 동일한 컴포넌트 클래스
+      (<code>eg-*</code>, <code>xx-*</code>) 를 사용합니다.
+    </p>
+    <div class="dx-rule">
+      <span>📌</span>
+      <span><b>신규 메뉴를 개발할 때</b> 반드시 본 페이지의 컴포넌트와 샘플을 먼저 클릭해 본 뒤,
+        해당 클래스/구조를 그대로 따라 React 컴포넌트에 적용하세요. AntD/MUI/shadcn 등 외부 UI 라이브러리 도입 금지.</span>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>5초 요약</h2>
+    <div class="home-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+      <div class="home-card">
+        <div class="num">#003087</div>
+        <div class="lbl">Primary (Brand Navy) · h1, 그리드 헤더, primary 버튼</div>
+      </div>
+      <div class="home-card">
+        <div class="num">14<small style="font-size:14px;">px</small></div>
+        <div class="lbl">본문 기본 폰트 (<code>--ez-fs-base</code>) · Pretendard 400</div>
+      </div>
+      <div class="home-card">
+        <div class="num">36<small style="font-size:14px;">px</small></div>
+        <div class="lbl">컨트롤 표준 높이 (<code>--ez-ctl-h</code>) · 버튼/입력/셀렉트</div>
+      </div>
+      <div class="home-card">
+        <div class="num">40<small style="font-size:14px;">px</small></div>
+        <div class="lbl">그리드 행 높이 (<code>--ez-row-h</code>) · 헤더는 42px</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>실제 React 코드에서 사용</h2>
+    <h3>1) 페이지 스켈레톤</h3>
+    <pre class="dx-code">// web/src/M000000XX/{Domain}Page.tsx
+import './{Domain}Page.css'   // prefix 만 다른 동일 구조
+import { Grid, DetailModal, ConfirmModal, ToastStack, useToast } from '../M000000000/shared'
+import api from '../lib/api'
+
+export default function DomainPage() {
+  const { toasts, show } = useToast()
+  return (
+    &lt;div className="xx-page"&gt;     {/* xx → 메뉴별 2~3자 prefix */}
+      &lt;div className="xx-header"&gt;
+        &lt;h1&gt;도메인명&lt;/h1&gt;
+        &lt;div className="xx-header-actions"&gt;
+          &lt;button className="eg-btn eg-btn-primary"&gt;+ 등록&lt;/button&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;div className="xx-search"&gt;...&lt;/div&gt;
+      &lt;Grid ... /&gt;
+      &lt;ToastStack toasts={toasts} /&gt;
+    &lt;/div&gt;
+  )
+}</pre>
+
+    <h3>2) 폰트 / 색은 토큰만</h3>
+    <pre class="dx-code">/* 신규 페이지 CSS - 절대 hex 직접 쓰지 말 것 */
+.xx-page { padding: 16px 20px; background: var(--ez-bg-page); }
+.xx-page h1 {
+  font-size: var(--ez-fs-xl);
+  font-weight: var(--ez-fw-bold);
+  color: var(--ez-primary);
+  border-left: 5px solid var(--ez-primary);
+  padding-left: 12px;
+}</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>레거시 시스템 대비 우리 디자인</h2>
+    <dl class="dx-kv">
+      <dt>색상 톤</dt><dd>Brand Navy <code>#003087</code> 1색 중심. 상태색은 토큰 4종(success/warning/danger/info)만.</dd>
+      <dt>가독성</dt><dd>본문 14px, 라벨 13px, 컨트롤 36px - 레거시보다 + 2~4px 키워 노안 대응.</dd>
+      <dt>그리드</dt><dd>헤더 sticky + tint 배경 + tabular numbers. 행 클릭 → 수정 모달 일관.</dd>
+      <dt>모달</dt><dd>중앙 정렬, 라벨 폭 110px 고정, 저장(우측)·삭제(좌측) 분리.</dd>
+      <dt>다크 모드</dt><dd>본체 ☼/☽ 토글과 동기. 토큰만 override.</dd>
+    </dl>
+  </div>
+
+</div>
+
+</body>
+</html>

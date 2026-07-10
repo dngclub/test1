@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>간격·반경·그림자 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div>
+    <div class="title">간격 · 반경 · 그림자 · 컨트롤</div>
+    <div class="meta">--ez-sp-* / --ez-ctl-* / --ez-row-*</div>
+  </div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>간격 스케일</h2>
+    <p class="lead"><code>4 / 8 / 12 / 16 / 20 / 24 / 32 px</code> 만 사용. 17px 같은 어중간한 값 금지.</p>
+    <div style="display:flex; gap:18px; align-items:flex-end; flex-wrap:wrap;">
+      <div style="text-align:center;"><div style="width:4px; height:60px; background:var(--ez-primary);"></div><div style="font-size:12px; margin-top:4px;">sp-1 · 4</div></div>
+      <div style="text-align:center;"><div style="width:8px; height:60px; background:var(--ez-primary);"></div><div style="font-size:12px; margin-top:4px;">sp-2 · 8</div></div>
+      <div style="text-align:center;"><div style="width:12px; height:60px; background:var(--ez-primary);"></div><div style="font-size:12px; margin-top:4px;">sp-3 · 12</div></div>
+      <div style="text-align:center;"><div style="width:16px; height:60px; background:var(--ez-primary);"></div><div style="font-size:12px; margin-top:4px;">sp-4 · 16</div></div>
+      <div style="text-align:center;"><div style="width:20px; height:60px; background:var(--ez-primary);"></div><div style="font-size:12px; margin-top:4px;">sp-5 · 20</div></div>
+      <div style="text-align:center;"><div style="width:24px; height:60px; background:var(--ez-primary);"></div><div style="font-size:12px; margin-top:4px;">sp-6 · 24</div></div>
+      <div style="text-align:center;"><div style="width:32px; height:60px; background:var(--ez-primary);"></div><div style="font-size:12px; margin-top:4px;">sp-8 · 32</div></div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>반경 (Border Radius)</h2>
+    <div class="dx-row">
+      <div style="width:80px; height:80px; background:var(--ez-card); border:1px solid var(--ez-border); border-radius:4px;"></div>
+      <span><code>4px</code> 작은 컨트롤 (페이저 버튼, 페이지사이즈 셀렉터)</span>
+    </div>
+    <div class="dx-row">
+      <div style="width:80px; height:80px; background:var(--ez-card); border:1px solid var(--ez-border); border-radius:6px;"></div>
+      <span><code>--ez-ctl-radius · 6px</code> 표준 컨트롤 (버튼, 입력, 셀렉트)</span>
+    </div>
+    <div class="dx-row">
+      <div style="width:80px; height:80px; background:var(--ez-card); border:1px solid var(--ez-border); border-radius:8px;"></div>
+      <span><code>8px</code> 카드, 그리드 wrap, 모달</span>
+    </div>
+    <div class="dx-row">
+      <div style="width:80px; height:30px; background:var(--ez-primary-tint); color:var(--ez-primary); border-radius:999px; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:600;">PILL</div>
+      <span><code>999px</code> Pill (xx-pill, xx-badge)</span>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>컨트롤 높이</h2>
+    <div class="dx-row">
+      <button class="eg-btn eg-btn-primary">표준 36px</button>
+      <input type="text" class="xx-input" style="width:200px;" value="입력도 36px"/>
+      <span class="xx-text-muted">--ez-ctl-h = 36px (표준)</span>
+    </div>
+    <div class="dx-row">
+      <button class="eg-btn eg-btn-sm eg-btn-primary">작은 30px</button>
+      <input type="text" style="width:200px; height:30px; padding:0 10px; border:1px solid var(--ez-border); border-radius:6px;" value="작은 컨트롤"/>
+      <span class="xx-text-muted">--ez-ctl-h-sm = 30px (보조)</span>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>그리드 행 높이</h2>
+    <div class="eg-grid-wrap" style="max-width:520px;">
+      <div class="eg-grid-scroll">
+        <table class="eg-grid">
+          <thead><tr><th>헤더 42px</th><th>코드</th></tr></thead>
+          <tbody>
+            <tr><td>행 40px</td><td>--ez-row-h</td></tr>
+            <tr><td>행 40px</td><td>--ez-row-h</td></tr>
+            <tr><td>행 40px</td><td>--ez-row-h</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "defaultMode": "acceptEdits",
+    "deny": [
+      "Bash(rm:*)", "Bash(rmdir:*)", "Bash(del:*)", "Bash(rd:*)", "Bash(format:*)",
+      "Read(//c/Windows/**)", "Read(//c/Program Files/**)", "Read(//etc/**)", "Read(//root/**)",
+      "Read(~/.ssh/**)", "Read(~/.aws/**)",
+      "Write(//c/Windows/**)", "Write(//c/Program Files/**)", "Write(//etc/**)", "Write(//root/**)",
+      "Write(~/.ssh/**)", "Write(~/.aws/**)",
+      "Edit(//c/Windows/**)", "Edit(//c/Program Files/**)", "Edit(//etc/**)", "Edit(//root/**)",
+      "Edit(~/.ssh/**)", "Edit(~/.aws/**)"
+    ],
+    "allow": [
+      "Read(./**)", "Edit(./**)", "Write(./**)",
+      "Bash(*)"
+    ]
+  }
+}

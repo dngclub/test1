@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>코드 라벨 칩 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">코드 라벨 칩 (xx-pill) - co_common_code 매핑</div><div class="meta">DB 코드값 → 한글 라벨 자동 표시</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>작업상태 (work_status_cd)</h2>
+    <div class="dx-row">
+      <span class="xx-pill is-info">1 · 작업요청</span>
+      <span class="xx-pill is-primary">2 · 작업접수</span>
+      <span class="xx-pill is-warning">3 · 작업시작</span>
+      <span class="xx-pill is-success">4 · 작업완료</span>
+      <span class="xx-pill is-danger">5 · 작업지연</span>
+      <span class="xx-pill is-muted">6 · 작업이관</span>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>중요도 (importance_level_type_cd)</h2>
+    <div class="dx-row">
+      <span class="xx-pill is-danger">1 · 매우중요</span>
+      <span class="xx-pill is-warning">2 · 중요</span>
+      <span class="xx-pill">3 · 보통</span>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>점검주기 (check_cycle_cd)</h2>
+    <div class="dx-row">
+      <span class="xx-pill is-info">1 · 시간</span>
+      <span class="xx-pill is-info">2 · 일</span>
+      <span class="xx-pill is-info">3 · 주</span>
+      <span class="xx-pill is-info">4 · 월</span>
+      <span class="xx-pill is-muted">5 · 수시</span>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>평가상태 (eval_status_cd)</h2>
+    <div class="dx-row">
+      <span class="xx-pill">N · 시작전</span>
+      <span class="xx-pill is-warning">Y · 평가중</span>
+      <span class="xx-pill is-success">C · 평가완료</span>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>요청유형 (work_req_type_cd)</h2>
+    <div class="dx-row">
+      <span class="xx-pill">1 · 시설</span>
+      <span class="xx-pill">2 · 전기</span>
+      <span class="xx-pill">3 · 방재</span>
+      <span class="xx-pill">4 · 보안</span>
+      <span class="xx-pill">5 · 미화</span>
+      <span class="xx-pill">6 · 조경</span>
+      <span class="xx-pill">7 · 건축</span>
+      <span class="xx-pill">8 · 관리</span>
+      <span class="xx-pill">9 · 기계</span>
+      <span class="xx-pill is-muted">99 · 관제</span>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>구현 패턴</h2>
+    <pre class="dx-code">// 백엔드 - JOIN 으로 라벨 함께 반환
+"LEFT JOIN co_common_code cc "
+" ON cc.common_cd_group='COMMON' "
+" AND cc.common_cd_id='work_status_cd' "
+" AND cc.common_cd=t.work_status_cd "
+// → 응답 필드: work_status_label
+
+// 프론트 - JOIN 라벨 우선 + fallback 클라이언트 매핑
+const STATUS_OPTIONS = [
+  { cd: '1', label: '작업요청' }, { cd: '2', label: '작업접수' },
+  { cd: '3', label: '작업시작' }, { cd: '4', label: '작업완료' },
+  { cd: '5', label: '작업지연' }, { cd: '6', label: '작업이관' },
+]
+const statusLabel = (cd) =&gt; STATUS_OPTIONS.find(o =&gt; o.cd === cd)?.label || cd || '-'
+
+// 그리드 셀
+{ key: 'work_status_cd', header: '상태', width: 90, align: 'center',
+  render: (r) =&gt; (
+    &lt;span className={`xx-pill ${statusToClass(r.work_status_cd)}`}&gt;
+      {r.work_status_label || statusLabel(r.work_status_cd)}
+    &lt;/span&gt;
+  ),
+}</pre>
+  </div>
+
+</div>
+
+</body>
+</html>

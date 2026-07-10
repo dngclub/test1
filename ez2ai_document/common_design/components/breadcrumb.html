@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>브레드크럼 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">브레드크럼 · xx-crumb</div><div class="meta">현재 페이지 경로 표시 - 본체 사이드바와 중복 정보지만 모바일/딥링크 진입 시 유용</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>기본</h2>
+    <div class="xx-crumb">
+      <a href="#">홈</a>
+      <span class="sep">›</span>
+      <a href="#">업무관리</a>
+      <span class="sep">›</span>
+      <span class="current">작업진행현황</span>
+    </div>
+    <pre class="dx-code">&lt;div className="xx-crumb"&gt;
+  &lt;a href="/"&gt;홈&lt;/a&gt;&lt;span className="sep"&gt;›&lt;/span&gt;
+  &lt;a href="/extensions"&gt;업무관리&lt;/a&gt;&lt;span className="sep"&gt;›&lt;/span&gt;
+  &lt;span className="current"&gt;작업진행현황&lt;/span&gt;
+&lt;/div&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>페이지 헤더와 함께</h2>
+    <div class="xx-page" style="border:1px solid var(--ez-border); border-radius:8px; padding:16px 20px; background:var(--ez-bg-page);">
+      <div class="xx-crumb">
+        <a href="#">홈</a><span class="sep">›</span>
+        <a href="#">안전보건경영</a><span class="sep">›</span>
+        <span class="current">위원회</span>
+      </div>
+      <div class="xx-header" style="margin-top:6px;">
+        <h1>위원회 관리</h1>
+        <div class="xx-header-actions">
+          <button class="eg-btn eg-btn-primary">+ 등록</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>레이아웃 셸 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+  <style>
+    html, body { height: 100%; overflow:hidden; }
+    body { display:flex; flex-direction:column; }
+    .ez2ai-shell { display:flex; height:100%; background:var(--ez-bg); color:var(--ez-text-strong); font-family:var(--ez-font-sans); }
+    .ez2ai-side { width:240px; flex-shrink:0; background:var(--ez-card); border-right:1px solid var(--ez-border); overflow-y:auto; }
+    .ez2ai-main { flex:1; display:flex; flex-direction:column; min-width:0; min-height:0; }
+
+    .ez2ai-side-status { padding:14px 16px; color:var(--ez-text-muted); font-size:12px; border-bottom:1px solid var(--ez-border-soft); }
+    .ez2ai-side-status b { color:var(--ez-primary); font-size:13px; }
+    .ez2ai-side-nav { padding:8px 0; }
+    .ez2ai-side-row { display:flex; align-items:center; gap:6px; padding:7px 14px; font-size:13px; color:var(--ez-text); cursor:pointer; }
+    .ez2ai-side-row:hover { background:var(--ez-row-hover); }
+    .ez2ai-side-row.is-active { background:var(--ez-success-bg); color:var(--ez-success-strong); font-weight:600; }
+    .ez2ai-side-group { padding:10px 14px 4px; font-size:11px; text-transform:uppercase; letter-spacing:0.06em; color:var(--ez-text-soft); font-weight:600; }
+
+    .ez2ai-topbar { display:flex; align-items:center; justify-content:space-between; padding:8px 18px; height:48px; background:var(--ez-card); border-bottom:1px solid var(--ez-border); }
+    .ez2ai-topbar .brand { font-size:15px; font-weight:700; color:var(--ez-primary); }
+    .ez2ai-topbar .actions { display:flex; gap:8px; align-items:center; }
+
+    .ez2ai-tabs {
+      display:flex; gap:2px; align-items:flex-end;
+      background:var(--ez-bg); border-bottom:1px solid var(--ez-border);
+      padding:4px 10px 0; height:34px; flex-shrink:0;
+      overflow-x:auto; overflow-y:hidden;
+    }
+    .ez2ai-tab {
+      display:inline-flex; align-items:center; gap:6px;
+      padding:4px 10px;
+      border:1px solid transparent; border-bottom:none;
+      background:transparent; cursor:pointer; border-radius:6px 6px 0 0;
+      font-size:12.5px; color:var(--ez-text-muted); white-space:nowrap;
+    }
+    .ez2ai-tab:hover { background:var(--ez-tab-hover-bg); color:var(--ez-text); }
+    .ez2ai-tab.is-active { background:var(--ez-tab-active-bg); border-color:var(--ez-border); color:var(--ez-text-strong); font-weight:600; margin-bottom:-1px; }
+    .ez2ai-tab-close { display:inline-flex; align-items:center; justify-content:center; width:16px; height:16px; border-radius:4px; color:var(--ez-text-soft); cursor:pointer; }
+    .ez2ai-tab-close:hover { background:var(--ez-border-soft); color:var(--ez-danger); }
+
+    .ez2ai-tab-body { flex:1; min-height:0; overflow:auto; background:var(--ez-bg); }
+  </style>
+</head>
+<body>
+
+<div class="ez2ai-shell">
+  <aside class="ez2ai-side">
+    <div class="ez2ai-side-status"><b>ez2AI</b><br>홍길동 · 운영팀</div>
+    <div class="ez2ai-side-group">공통기반</div>
+    <div class="ez2ai-side-nav">
+      <div class="ez2ai-side-row">📨 결재함</div>
+      <div class="ez2ai-side-row">📢 공지사항</div>
+      <div class="ez2ai-side-row">⚙️ 기준정보</div>
+    </div>
+    <div class="ez2ai-side-group">안전보건경영</div>
+    <div class="ez2ai-side-nav">
+      <div class="ez2ai-side-row">👥 조직 / 책임자</div>
+      <div class="ez2ai-side-row">📋 위원회</div>
+      <div class="ez2ai-side-row">📚 규정·지침</div>
+    </div>
+    <div class="ez2ai-side-group">업무·작업</div>
+    <div class="ez2ai-side-nav">
+      <div class="ez2ai-side-row">🔧 작업오더</div>
+      <div class="ez2ai-side-row is-active">📊 작업진행현황</div>
+      <div class="ez2ai-side-row">🔍 통합점검</div>
+      <div class="ez2ai-side-row">📝 점검결과조회</div>
+    </div>
+    <div class="ez2ai-side-group">위험요인</div>
+    <div class="ez2ai-side-nav">
+      <div class="ez2ai-side-row">⚠️ 위험성평가</div>
+      <div class="ez2ai-side-row">🧪 MSDS</div>
+      <div class="ez2ai-side-row">🛡 TBM</div>
+    </div>
+  </aside>
+
+  <main class="ez2ai-main">
+    <div class="ez2ai-topbar">
+      <div class="brand">ez2AI 공통 시스템</div>
+      <div class="actions">
+        <button class="eg-btn eg-btn-sm eg-btn-default" style="position:relative;">🔔<span class="xx-badge" style="position:absolute; top:-4px; right:-4px;">5</span></button>
+        <button class="eg-btn eg-btn-sm eg-btn-default">☽</button>
+        <button class="eg-btn eg-btn-sm eg-btn-default">👤 홍길동 ▾</button>
+      </div>
+    </div>
+
+    <div class="ez2ai-tabs">
+      <div class="ez2ai-tab">공지사항 <span class="ez2ai-tab-close">✕</span></div>
+      <div class="ez2ai-tab is-active">작업진행현황 <span class="ez2ai-tab-close">✕</span></div>
+      <div class="ez2ai-tab">위원회 <span class="ez2ai-tab-close">✕</span></div>
+    </div>
+
+    <div class="ez2ai-tab-body">
+      <div class="xx-page">
+        <div class="xx-header">
+          <h1>작업진행현황</h1>
+          <div class="xx-header-actions">
+            <button class="eg-btn eg-btn-default">🔄 새로고침</button>
+          </div>
+        </div>
+        <div class="xx-summary-row">
+          <div class="xx-summary-card"><div class="xx-summary-label">전체 오더</div><div class="xx-summary-value">248<small>건</small></div></div>
+          <div class="xx-summary-card xx-summary-warn"><div class="xx-summary-label">기한 초과</div><div class="xx-summary-value">12<small>건</small></div></div>
+          <div class="xx-summary-card xx-summary-info"><div class="xx-summary-label">작업시작</div><div class="xx-summary-value">37<small>건</small></div></div>
+          <div class="xx-summary-card xx-summary-success"><div class="xx-summary-label">작업완료</div><div class="xx-summary-value">186<small>건</small></div></div>
+        </div>
+        <p class="xx-text-muted xx-fs-sm" style="margin-top:14px;">상단 사이드(240) + 콘텐츠(가변). 본 영역이 React Router 가 메뉴별 페이지로 렌더하는 곳.</p>
+      </div>
+    </div>
+  </main>
+</div>
+
+</body>
+</html>

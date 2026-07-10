@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>탭 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">탭 · xx-tabs</div><div class="meta">상세 모달 안 다중 섹션 / 페이지 내 카테고리 전환</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>기본</h2>
+    <div class="xx-tabs">
+      <button class="xx-tab is-active">기본정보</button>
+      <button class="xx-tab">참여자</button>
+      <button class="xx-tab">첨부파일</button>
+      <button class="xx-tab">이력</button>
+    </div>
+    <div style="padding:18px; background:var(--ez-card); border:1px solid var(--ez-border); border-top:0; min-height:120px;">
+      <p style="margin:0; font-size:14px;">선택된 탭의 내용 영역입니다.</p>
+    </div>
+    <pre class="dx-code">const [tab, setTab] = useState('basic')
+
+&lt;div className="xx-tabs"&gt;
+  {[['basic','기본정보'],['member','참여자'],['file','첨부파일'],['log','이력']].map(([k,l]) =&gt;
+    &lt;button key={k} className={`xx-tab ${tab===k?'is-active':''}`} onClick={()=&gt;setTab(k)}&gt;
+      {l}
+    &lt;/button&gt;
+  )}
+&lt;/div&gt;
+{tab === 'basic' &amp;&amp; &lt;BasicTab /&gt;}
+{tab === 'member' &amp;&amp; &lt;MemberTab /&gt;}</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>모달 내부에서</h2>
+    <div class="eg-modal" style="position:static; max-width:560px;">
+      <div class="eg-modal-header">
+        <h2>위험성평가 상세 - RA-2026-0042</h2>
+        <button class="eg-modal-close">✕</button>
+      </div>
+      <div class="xx-tabs" style="margin:0; padding:0 4px;">
+        <button class="xx-tab is-active">평가내용</button>
+        <button class="xx-tab">감소대책</button>
+        <button class="xx-tab">이력</button>
+      </div>
+      <div class="eg-modal-body" style="border-top:1px solid var(--ez-border);">
+        <div class="eg-form-row">
+          <label>대상 작업</label>
+          <div class="eg-form-control"><div class="eg-form-view">고소작업 - 2층 외벽 보수</div></div>
+        </div>
+        <div class="eg-form-row">
+          <label>위험원</label>
+          <div class="eg-form-control"><div class="eg-form-view">추락, 낙하물</div></div>
+        </div>
+      </div>
+      <div class="eg-modal-footer">
+        <button class="eg-btn eg-btn-default">닫기</button>
+        <button class="eg-btn eg-btn-primary">저장</button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

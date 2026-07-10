@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>스위치 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">스위치 · xx-switch</div><div class="meta">on/off 2 상태 토글 - 사용 빈도 낮음. 일반 폼은 체크박스 우선.</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+  <div class="dx-section">
+    <h2>기본</h2>
+    <div class="dx-row">
+      <label class="xx-yn">
+        <span class="xx-switch"><input type="checkbox" checked><span class="xx-switch-slider"></span></span>
+        실시간 알림
+      </label>
+      <label class="xx-yn">
+        <span class="xx-switch"><input type="checkbox"><span class="xx-switch-slider"></span></span>
+        주말 알림
+      </label>
+    </div>
+    <pre class="dx-code">&lt;label className="xx-yn"&gt;
+  &lt;span className="xx-switch"&gt;
+    &lt;input type="checkbox" checked={on} onChange={...} /&gt;
+    &lt;span className="xx-switch-slider"&gt;&lt;/span&gt;
+  &lt;/span&gt;
+  실시간 알림
+&lt;/label&gt;</pre>
+    <p class="lead" style="margin-top:8px;">사용 권장 상황: 설정 화면, 알림 on/off, 자동 새로고침 등.
+      <b>Y/N 컬럼 저장형 폼에는 체크박스를 우선 사용</b> 합니다.</p>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+# ez2AI Builder child project dependencies (isolated venv per project).
+# ASCII-only to avoid pip cp949 decode errors on Korean Windows.
+fastapi>=0.110.0
+uvicorn[standard]>=0.27.0
+sqlalchemy>=2.0.0
+# Database drivers - child alembic env.py picks sync/async DSN from
+# .dev_context/databases.json (PostgreSQL or MySQL/MariaDB).
+asyncpg>=0.29.0
+psycopg2-binary>=2.9.0
+pymysql>=1.1.0
+aiomysql>=0.2.0
+alembic>=1.13.0
+pyjwt>=2.8.0
+python-dotenv>=1.0.0
+httpx>=0.26.0
+pydantic>=2.5.0
+cryptography>=42.0.0
+# watchfiles - uvicorn --reload watcher (without it StatReload falls back
+# to a Windows ProactorEventLoop socket fd conflict on hot reload).
+watchfiles>=0.20.0

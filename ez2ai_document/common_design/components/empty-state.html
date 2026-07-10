@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>빈 상태 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">빈 상태 · empty state</div><div class="meta">데이터/검색결과/권한 없음 안내</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>그리드 내부 (eg-empty)</h2>
+    <p class="lead">검색 결과 없음은 토스트 대신 그리드 안에 표시. 사용자가 어디서 무엇이 비었는지 즉시 인지.</p>
+    <div class="eg-grid-wrap" style="max-width:640px;">
+      <div class="eg-grid-head"><div class="eg-grid-head-left">전체 0건</div></div>
+      <div class="eg-grid-scroll">
+        <table class="eg-grid">
+          <thead><tr><th>오더번호</th><th>제목</th><th style="width:120px;">등록일</th></tr></thead>
+          <tbody>
+            <tr><td colspan="3" class="eg-empty">검색 결과가 없습니다.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>풍부한 카드 (xx-empty-card)</h2>
+    <p class="lead">전체 화면이 비어있을 때, 사용자가 다음 행동을 취하도록 안내.</p>
+    <div class="xx-empty-card" style="max-width:520px;">
+      <div class="icon">📋</div>
+      <div class="title">등록된 위원회가 없습니다</div>
+      <div class="desc">위원회를 등록하고 회의록을 함께 관리하세요.</div>
+      <button class="eg-btn eg-btn-primary">+ 위원회 등록</button>
+    </div>
+    <pre class="dx-code">&lt;div className="xx-empty-card"&gt;
+  &lt;div className="icon"&gt;📋&lt;/div&gt;
+  &lt;div className="title"&gt;등록된 위원회가 없습니다&lt;/div&gt;
+  &lt;div className="desc"&gt;위원회를 등록하고 회의록을 함께 관리하세요.&lt;/div&gt;
+  &lt;button className="eg-btn eg-btn-primary"&gt;+ 위원회 등록&lt;/button&gt;
+&lt;/div&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>권한 없음</h2>
+    <div class="xx-empty-card" style="max-width:520px;">
+      <div class="icon" style="color:var(--ez-danger);">🚫</div>
+      <div class="title">접근 권한이 없습니다</div>
+      <div class="desc">이 메뉴에 대한 권한이 없습니다. 관리자에게 문의하세요.</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

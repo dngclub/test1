@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>신규 페이지 체크리스트 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div>
+    <div class="title">신규 페이지 체크리스트</div>
+    <div class="meta">PR 전 13 항목 자기 검증</div>
+  </div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>① 구조 (5)</h2>
+    <ul style="font-size: var(--ez-fs-base); line-height: 1.9; padding-left: 22px;">
+      <li>✅ 루트 컨테이너 <code>&lt;div className="{prefix}-page"&gt;</code>, 단일 prefix 일관성</li>
+      <li>✅ 헤더 <code>{prefix}-header</code> = h1 + <code>{prefix}-header-actions</code> (등록/엑셀 등 우측 정렬)</li>
+      <li>✅ 검색 영역 <code>{prefix}-search</code> 카드 - 우측 액션 그룹 (<code>{prefix}-search-actions</code>) <code>margin-left: auto</code></li>
+      <li>✅ 그리드 영역 <code>&lt;Grid /&gt;</code> (공통 컴포넌트 그대로 사용)</li>
+      <li>✅ ToastStack 페이지 루트에 배치</li>
+    </ul>
+  </div>
+
+  <div class="dx-section">
+    <h2>② 디자인 토큰 (4)</h2>
+    <ul style="font-size: var(--ez-fs-base); line-height: 1.9; padding-left: 22px;">
+      <li>✅ CSS 안에 <strong>hex 직접 사용 없음</strong> (예외: 차트 색)</li>
+      <li>✅ 폰트 크기 <code>--ez-fs-*</code> 만 사용</li>
+      <li>✅ 컨트롤 높이 36px 미만 없음 (검색바 입력 포함)</li>
+      <li>✅ Pretendard 폰트 패밀리 (Layout.css 가 body 에 적용 - 페이지 별도 지정 불필요)</li>
+    </ul>
+  </div>
+
+  <div class="dx-section">
+    <h2>③ 동작 (4)</h2>
+    <ul style="font-size: var(--ez-fs-base); line-height: 1.9; padding-left: 22px;">
+      <li>✅ <code>useEffect</code> 마운트 → fetchList 1 회</li>
+      <li>✅ 행 클릭 → 수정 모달, <code>+ 등록</code> 버튼 → 신규 모달</li>
+      <li>✅ 삭제 → <code>&lt;ConfirmModal /&gt;</code> 으로 확인</li>
+      <li>✅ 모든 API 에러 → 401 은 <code>/login</code>, 그 외 <code>show('error', err...)</code></li>
+    </ul>
+  </div>
+
+  <div class="dx-section">
+    <h2>다크 모드 검증</h2>
+    <p class="lead">개발자 도구에서 <code>document.documentElement.classList.add('dark')</code> 실행해서
+      라이트/다크 모두에서 가독성·콘트라스트 확인. 토큰만 썼다면 자동으로 잘 보입니다.</p>
+  </div>
+
+  <div class="dx-section">
+    <h2>가드레일 (절대 수정 금지)</h2>
+    <div class="dx-rule danger">
+      <span>⛔</span>
+      <span>
+        <b>main.tsx · AuthProvider.tsx · ProtectedRoute.tsx · routers/__init__.py · vite.config.ts</b>
+        는 수정하지 마세요. 단순화·리팩토링·주석 정리도 금지. (SHARED_GUIDE §0.1)
+      </span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

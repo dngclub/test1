@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>결재선 스텝 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+  <style>
+    .ap-flow { display:flex; align-items:stretch; gap:8px; padding:14px 0; overflow-x:auto; }
+    .ap-step {
+      min-width:140px; flex:0 0 140px;
+      background:var(--ez-card); border:1px solid var(--ez-border); border-radius:8px;
+      padding:10px 12px; position:relative;
+    }
+    .ap-step.is-done   { border-color:var(--ez-success); background:var(--ez-success-bg); }
+    .ap-step.is-active { border-color:var(--ez-primary); background:var(--ez-primary-tint); box-shadow:0 0 0 2px var(--ez-primary-focus); }
+    .ap-step.is-reject { border-color:var(--ez-danger); background:var(--ez-danger-bg); }
+    .ap-step .role { font-size:11px; color:var(--ez-text-muted); }
+    .ap-step .name { font-size:14px; font-weight:600; color:var(--ez-text-strong); margin-top:2px; }
+    .ap-step .status { font-size:11px; margin-top:6px; }
+    .ap-step.is-done .status { color:var(--ez-success-strong); }
+    .ap-step.is-active .status { color:var(--ez-primary); }
+    .ap-step.is-reject .status { color:var(--ez-danger); }
+    .ap-arrow { display:flex; align-items:center; color:var(--ez-text-soft); font-size:18px; }
+  </style>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">결재선 스텝 · approval flow</div><div class="meta">결재 진행 단계 시각화 - 작업허가, 위험성평가 결재 등</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>진행 중</h2>
+    <div class="ap-flow">
+      <div class="ap-step is-done">
+        <div class="role">기안자</div>
+        <div class="name">홍길동</div>
+        <div class="status">✓ 상신 · 05-19 09:12</div>
+      </div>
+      <div class="ap-arrow">›</div>
+      <div class="ap-step is-done">
+        <div class="role">팀장</div>
+        <div class="name">김영희</div>
+        <div class="status">✓ 승인 · 05-19 10:34</div>
+      </div>
+      <div class="ap-arrow">›</div>
+      <div class="ap-step is-active">
+        <div class="role">실장</div>
+        <div class="name">이철수</div>
+        <div class="status">⏳ 결재 대기</div>
+      </div>
+      <div class="ap-arrow">›</div>
+      <div class="ap-step">
+        <div class="role">안전책임자</div>
+        <div class="name">박지수</div>
+        <div class="status">대기 중</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>반려된 흐름</h2>
+    <div class="ap-flow">
+      <div class="ap-step is-done">
+        <div class="role">기안자</div>
+        <div class="name">홍길동</div>
+        <div class="status">✓ 상신</div>
+      </div>
+      <div class="ap-arrow">›</div>
+      <div class="ap-step is-reject">
+        <div class="role">팀장</div>
+        <div class="name">김영희</div>
+        <div class="status">✕ 반려 · "안전 조치 부족"</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>구현</h2>
+    <pre class="dx-code">&lt;div className="ap-flow"&gt;
+  {steps.map((s, i) =&gt; (
+    &lt;React.Fragment key={s.id}&gt;
+      &lt;div className={`ap-step ${stepCls(s.status)}`}&gt;
+        &lt;div className="role"&gt;{s.role}&lt;/div&gt;
+        &lt;div className="name"&gt;{s.user_name}&lt;/div&gt;
+        &lt;div className="status"&gt;{statusText(s)}&lt;/div&gt;
+      &lt;/div&gt;
+      {i &lt; steps.length - 1 &amp;&amp; &lt;div className="ap-arrow"&gt;›&lt;/div&gt;}
+    &lt;/React.Fragment&gt;
+  ))}
+&lt;/div&gt;</pre>
+  </div>
+
+</div>
+
+</body>
+</html>

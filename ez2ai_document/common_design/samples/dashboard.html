@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>대시보드 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">샘플 · 대시보드 (작업진행현황)</div><div class="meta">M000000034 WorkProgressPage 의 표준 차트 패턴</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="xx-page" style="padding:18px 22px; min-height:calc(100vh - 60px);">
+
+  <div class="xx-header">
+    <h1>작업진행현황</h1>
+    <div class="xx-header-actions">
+      <span class="xx-text-muted xx-fs-sm">기준일 2026-05-19</span>
+      <button class="eg-btn eg-btn-default">🔄 새로고침</button>
+    </div>
+  </div>
+
+  <div class="xx-summary-row">
+    <div class="xx-summary-card"><div class="xx-summary-label">전체 오더</div><div class="xx-summary-value">248<small>건</small></div></div>
+    <div class="xx-summary-card xx-summary-warn"><div class="xx-summary-label">기한 초과</div><div class="xx-summary-value">12<small>건</small></div></div>
+    <div class="xx-summary-card xx-summary-info"><div class="xx-summary-label">작업시작</div><div class="xx-summary-value">37<small>건</small></div></div>
+    <div class="xx-summary-card xx-summary-success"><div class="xx-summary-label">작업완료</div><div class="xx-summary-value">186<small>건</small></div></div>
+  </div>
+
+  <div class="xx-chart-row">
+    <div class="xx-chart-card">
+      <h3>상태별 분포</h3>
+      <div class="xx-bar-row"><div class="xx-bar-label">작업요청</div><div class="xx-bar-track"><div class="xx-bar-fill is-info" style="width:8%;"></div></div><div class="xx-bar-value">20건</div></div>
+      <div class="xx-bar-row"><div class="xx-bar-label">작업접수</div><div class="xx-bar-track"><div class="xx-bar-fill is-info" style="width:12%;"></div></div><div class="xx-bar-value">29건</div></div>
+      <div class="xx-bar-row"><div class="xx-bar-label">작업시작</div><div class="xx-bar-track"><div class="xx-bar-fill is-warning" style="width:15%;"></div></div><div class="xx-bar-value">37건</div></div>
+      <div class="xx-bar-row"><div class="xx-bar-label">작업완료</div><div class="xx-bar-track"><div class="xx-bar-fill is-success" style="width:75%;"></div></div><div class="xx-bar-value">186건</div></div>
+      <div class="xx-bar-row"><div class="xx-bar-label">작업지연</div><div class="xx-bar-track"><div class="xx-bar-fill is-danger" style="width:5%;"></div></div><div class="xx-bar-value">12건</div></div>
+      <div class="xx-bar-row"><div class="xx-bar-label">작업이관</div><div class="xx-bar-track"><div class="xx-bar-fill" style="width:1%; background:var(--ez-text-soft);"></div></div><div class="xx-bar-value">2건</div></div>
+    </div>
+
+    <div class="xx-chart-card">
+      <h3>중요도 분포</h3>
+      <div class="xx-bar-row"><div class="xx-bar-label">매우중요</div><div class="xx-bar-track"><div class="xx-bar-fill is-danger" style="width:18%;"></div></div><div class="xx-bar-value">45건</div></div>
+      <div class="xx-bar-row"><div class="xx-bar-label">중요</div><div class="xx-bar-track"><div class="xx-bar-fill is-warning" style="width:38%;"></div></div><div class="xx-bar-value">94건</div></div>
+      <div class="xx-bar-row"><div class="xx-bar-label">보통</div><div class="xx-bar-track"><div class="xx-bar-fill" style="width:44%;"></div></div><div class="xx-bar-value">109건</div></div>
+    </div>
+  </div>
+
+  <div class="xx-chart-card" style="margin-top:14px;">
+    <h3>부서별 진행 현황</h3>
+    <div class="xx-bar-row" style="grid-template-columns: 140px 1fr 80px;"><div class="xx-bar-label">운영팀</div><div class="xx-bar-track"><div class="xx-bar-fill is-success" style="width:88%;"></div></div><div class="xx-bar-value">88%</div></div>
+    <div class="xx-bar-row" style="grid-template-columns: 140px 1fr 80px;"><div class="xx-bar-label">시설관리실</div><div class="xx-bar-track"><div class="xx-bar-fill is-warning" style="width:62%;"></div></div><div class="xx-bar-value">62%</div></div>
+    <div class="xx-bar-row" style="grid-template-columns: 140px 1fr 80px;"><div class="xx-bar-label">방재팀</div><div class="xx-bar-track"><div class="xx-bar-fill is-danger" style="width:43%;"></div></div><div class="xx-bar-value">43%</div></div>
+    <div class="xx-bar-row" style="grid-template-columns: 140px 1fr 80px;"><div class="xx-bar-label">전기팀</div><div class="xx-bar-track"><div class="xx-bar-fill is-success" style="width:91%;"></div></div><div class="xx-bar-value">91%</div></div>
+    <div class="xx-bar-row" style="grid-template-columns: 140px 1fr 80px;"><div class="xx-bar-label">보안팀</div><div class="xx-bar-track"><div class="xx-bar-fill" style="width:74%;"></div></div><div class="xx-bar-value">74%</div></div>
+  </div>
+
+</div>
+
+</body>
+</html>

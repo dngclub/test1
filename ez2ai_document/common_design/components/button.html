@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>버튼 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div>
+    <div class="title">버튼 · eg-btn</div>
+    <div class="meta">ez-tailwind.css 정의 - 모든 페이지가 사용</div>
+  </div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>표준 변형 (variant)</h2>
+    <div class="dx-row">
+      <button class="eg-btn eg-btn-primary">저장</button>
+      <button class="eg-btn eg-btn-default">취소</button>
+      <button class="eg-btn eg-btn-outline">+ 등록</button>
+      <button class="eg-btn eg-btn-danger">삭제</button>
+      <button class="eg-btn eg-btn-success">승인</button>
+      <button class="eg-btn eg-btn-warning">보류</button>
+      <button class="eg-btn eg-btn-ghost">닫기</button>
+      <button class="eg-btn eg-btn-link">자세히 ›</button>
+    </div>
+    <pre class="dx-code">&lt;button className="eg-btn eg-btn-primary"&gt;저장&lt;/button&gt;
+&lt;button className="eg-btn eg-btn-default"&gt;취소&lt;/button&gt;
+&lt;button className="eg-btn eg-btn-outline"&gt;+ 등록&lt;/button&gt;
+&lt;button className="eg-btn eg-btn-danger"&gt;삭제&lt;/button&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>크기</h2>
+    <div class="dx-row">
+      <button class="eg-btn eg-btn-sm eg-btn-primary">작게 30px</button>
+      <button class="eg-btn eg-btn-primary">표준 36px</button>
+    </div>
+    <p class="lead">표준은 헤더/검색/모달 푸터, 작은 크기는 그리드 셀 내부 (행 액션 등) 에만.</p>
+  </div>
+
+  <div class="dx-section">
+    <h2>아이콘 버튼</h2>
+    <div class="dx-row">
+      <button class="eg-btn eg-btn-icon eg-btn-default" title="검색">🔍</button>
+      <button class="eg-btn eg-btn-icon eg-btn-default" title="새로고침">🔄</button>
+      <button class="eg-btn eg-btn-icon eg-btn-default" title="엑셀">📊</button>
+      <button class="eg-btn eg-btn-icon eg-btn-danger" title="삭제">🗑</button>
+      <button class="eg-btn eg-btn-primary"><span>📤</span> 엑셀 다운로드</button>
+      <button class="eg-btn eg-btn-default"><span>🔄</span> 새로고침</button>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>상태</h2>
+    <div class="dx-row">
+      <button class="eg-btn eg-btn-primary">정상</button>
+      <button class="eg-btn eg-btn-primary" disabled>비활성</button>
+      <button class="eg-btn eg-btn-default" disabled>비활성 default</button>
+      <button class="eg-btn eg-btn-primary"><span class="xx-spinner" style="border-color:rgba(255,255,255,0.3); border-top-color:#fff;"></span> 처리 중…</button>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>전체 너비 (모달 푸터 등)</h2>
+    <div style="max-width:320px;">
+      <button class="eg-btn eg-btn-block eg-btn-primary">로그인</button>
+    </div>
+    <pre class="dx-code">&lt;button className="eg-btn eg-btn-block eg-btn-primary"&gt;로그인&lt;/button&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>사용 가이드</h2>
+    <ul style="font-size:14px; line-height:1.8;">
+      <li><b>primary</b> = "이 화면의 주 액션" (저장, 로그인, 검색) - 한 영역에 1 개만</li>
+      <li><b>default</b> = 보조 액션 (취소, 닫기, 부 기능)</li>
+      <li><b>outline</b> = "추가/생성" 의미가 강한 보조 (+ 등록)</li>
+      <li><b>danger</b> = 삭제, 거부 - 모달 footer 좌측 (<code>className="eg-btn eg-btn-danger left"</code>)</li>
+      <li><b>success / warning</b> = 결재 승인/보류, 상태 변경</li>
+      <li><b>ghost / link</b> = 그리드 셀 내부 인라인 액션 등 최소 영역</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>

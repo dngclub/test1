@@ -1,0 +1,8 @@
+# ez2AI - codex sandbox: cwd(workspace) 외 시스템 쓰기 차단. Windows 네이티브 OS 강제 지원.
+sandbox_mode = "workspace-write"
+approval_policy = "on-request"
+
+[sandbox_workspace_write]
+network_access = false
+exclude_slash_tmp = true
+exclude_tmpdir_env_var = true

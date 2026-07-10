@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>툴팁 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">툴팁 · xx-tip[data-tip]</div><div class="meta">CSS-only - JS 불필요. 아이콘 버튼, 잘린 셀, 보조 설명에 사용</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>기본 (마우스 올려보세요)</h2>
+    <div class="dx-row" style="padding:40px 0;">
+      <span class="xx-tip" data-tip="새 항목 등록">
+        <button class="eg-btn eg-btn-icon eg-btn-default">➕</button>
+      </span>
+      <span class="xx-tip" data-tip="엑셀로 다운로드">
+        <button class="eg-btn eg-btn-icon eg-btn-default">📊</button>
+      </span>
+      <span class="xx-tip" data-tip="새로고침 (F5)">
+        <button class="eg-btn eg-btn-icon eg-btn-default">🔄</button>
+      </span>
+      <span class="xx-tip" data-tip="이 항목 삭제 — 되돌릴 수 없습니다">
+        <button class="eg-btn eg-btn-icon eg-btn-danger">🗑</button>
+      </span>
+    </div>
+    <pre class="dx-code">&lt;span className="xx-tip" data-tip="새 항목 등록"&gt;
+  &lt;button className="eg-btn eg-btn-icon eg-btn-default"&gt;➕&lt;/button&gt;
+&lt;/span&gt;</pre>
+    <p class="lead">짧은 텍스트만. 긴 설명이 필요하면 별도 안내 영역을 두세요.</p>
+  </div>
+
+</div>
+
+</body>
+</html>

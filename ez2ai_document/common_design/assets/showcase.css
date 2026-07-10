@@ -1,0 +1,143 @@
+/* 쇼케이스 페이지 전용 (각 컴포넌트/샘플 페이지 상단 헤더, section 카드 등)
+   본 CSS 는 디자인 시스템에는 포함되지 않는다. 데모 페이지 자체의 레이아웃용. */
+
+.dx-page {
+  padding: 0;
+  background: var(--ez-bg);
+  color: var(--ez-text);
+  min-height: 100vh;
+}
+.dx-topbar {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 14px 22px;
+  background: var(--ez-card);
+  border-bottom: 1px solid var(--ez-border);
+  position: sticky; top: 0; z-index: 10;
+}
+.dx-topbar .title {
+  font-size: var(--ez-fs-lg);
+  font-weight: var(--ez-fw-bold);
+  color: var(--ez-primary);
+  border-left: 4px solid var(--ez-primary);
+  padding-left: 10px;
+  line-height: 1.2;
+}
+.dx-topbar .meta {
+  font-size: var(--ez-fs-xs);
+  color: var(--ez-text-muted);
+  margin-top: 2px;
+  margin-left: 14px;
+}
+.dx-topbar .actions { display: flex; gap: 8px; align-items: center; }
+.dx-theme-toggle {
+  display: inline-flex; align-items: center; gap: 6px;
+  height: 30px; padding: 0 12px;
+  background: var(--ez-card);
+  border: 1px solid var(--ez-border);
+  border-radius: 6px;
+  font-size: var(--ez-fs-sm);
+  cursor: pointer;
+  color: var(--ez-text);
+  font-family: inherit;
+}
+.dx-theme-toggle:hover { border-color: var(--ez-primary); color: var(--ez-primary); }
+
+.dx-body { padding: 22px; max-width: 1280px; margin: 0 auto; }
+
+.dx-section {
+  background: var(--ez-card);
+  border: 1px solid var(--ez-border);
+  border-radius: 8px;
+  padding: 20px 22px;
+  margin-bottom: 18px;
+  box-shadow: var(--ez-shadow-sm);
+}
+.dx-section > h2 {
+  font-size: var(--ez-fs-md);
+  font-weight: var(--ez-fw-bold);
+  color: var(--ez-text-strong);
+  margin: 0 0 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--ez-border-soft);
+}
+.dx-section > h3 {
+  font-size: var(--ez-fs-base);
+  font-weight: var(--ez-fw-semibold);
+  color: var(--ez-text);
+  margin: 16px 0 8px;
+}
+.dx-section .lead {
+  font-size: var(--ez-fs-sm);
+  color: var(--ez-text-muted);
+  margin: 0 0 14px;
+  line-height: 1.6;
+}
+
+.dx-row {
+  display: flex; flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+  padding: 10px 0;
+}
+.dx-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.dx-code {
+  display: block;
+  background: var(--ez-card-soft);
+  border: 1px solid var(--ez-border);
+  border-radius: 6px;
+  padding: 12px 14px;
+  font-family: var(--ez-font-mono);
+  font-size: 12.5px;
+  color: var(--ez-text);
+  overflow-x: auto;
+  white-space: pre;
+  margin-top: 8px;
+}
+.dx-kv {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 6px 16px;
+  font-size: var(--ez-fs-sm);
+}
+.dx-kv dt {
+  color: var(--ez-text-muted);
+  font-weight: var(--ez-fw-semibold);
+}
+.dx-kv dd { margin: 0; color: var(--ez-text); }
+
+.dx-swatch {
+  display: flex; flex-direction: column;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--ez-border);
+}
+.dx-swatch .box {
+  height: 60px;
+}
+.dx-swatch .label {
+  padding: 8px 10px;
+  background: var(--ez-card);
+  font-size: var(--ez-fs-xs);
+  color: var(--ez-text);
+}
+.dx-swatch .label b { display: block; font-size: var(--ez-fs-sm); margin-bottom: 2px; }
+
+.dx-rule {
+  display: flex; gap: 10px; align-items: flex-start;
+  padding: 10px 12px;
+  background: var(--ez-primary-tint);
+  border: 1px solid var(--ez-primary-tint-strong);
+  border-radius: 6px;
+  font-size: var(--ez-fs-sm);
+  color: var(--ez-text);
+}
+.dx-rule b { color: var(--ez-primary); }
+.dx-rule.warn { background: var(--ez-warning-bg); border-color: var(--ez-warning-border); }
+.dx-rule.warn b { color: var(--ez-warning-text); }
+.dx-rule.danger { background: var(--ez-danger-bg); border-color: var(--ez-danger-border); }
+.dx-rule.danger b { color: var(--ez-danger-text); }

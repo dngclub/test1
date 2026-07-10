@@ -1,0 +1,20 @@
+{
+  "id": "32755123-54c7-4c7e-9c38-6daa41325c64",
+  "project_code": "P00001",
+  "project_name": "구매관리 개발",
+  "description": "",
+  "db_type": "postgresql",
+  "backend_stack": "python",
+  "is_local_db": true,
+  "db_name": "ez2ai",
+  "db_schema": "simbizlocal",
+  "status": "active",
+  "site_name": null,
+  "primary_color": null,
+  "dev_plan_content": null,
+  "design_template_code": "common_design",
+  "created_by": null,
+  "created_at": "2026-07-10T00:38:56.538622+00:00",
+  "updated_at": "2026-07-10T00:49:37.538674+00:00",
+  "naming_rules": []
+}

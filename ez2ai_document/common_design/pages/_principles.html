@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>디자인 원칙 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div>
+    <div class="title">디자인 원칙</div>
+    <div class="meta">전 화면이 따르는 6 가지 핵심 원칙</div>
+  </div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>1 · 토큰 우선 (Token-First)</h2>
+    <p class="lead">색·폰트·간격·반경·그림자는 모두 <code>--ez-*</code> 토큰을 통해서만 사용합니다.
+      페이지 CSS 에서 <code>#003087</code> 같은 hex 직접 쓰기 금지. 다크 모드가 토큰 override 한 번으로
+      해결되는 이유이기도 합니다.</p>
+    <pre class="dx-code">/* ❌ 잘못 */
+.an-title { color: #1e3a8a; font-size: 14px; }
+
+/* ✅ 올바름 */
+.an-title { color: var(--ez-link); font-size: var(--ez-fs-base); }</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>2 · 단일 prefix per 페이지</h2>
+    <p class="lead">한 페이지의 모든 클래스는 동일 2~3자 prefix 로 시작 (예: <code>an-</code> 공지,
+      <code>cc-</code> 공통코드, <code>in-</code> 점검). 전역 CSS 충돌 차단 + 검색/디버깅 용이.</p>
+    <pre class="dx-code">/* AnnouncementPage.css */
+.an-page { ... }
+.an-search { ... }
+.an-title { ... }</pre>
+    <p class="lead">단, 공통 컴포넌트가 제공하는 클래스는 그대로 사용합니다:
+      <code>eg-btn</code>, <code>eg-grid-*</code>, <code>eg-modal-*</code>, <code>eg-form-row</code>,
+      <code>eg-toast-*</code>, <code>eg-pager</code> 등.</p>
+  </div>
+
+  <div class="dx-section">
+    <h2>3 · 컨트롤 36px / 본문 14px</h2>
+    <p class="lead">버튼/입력/셀렉트는 모두 <code>--ez-ctl-h (36px)</code>. 그리드 행은
+      <code>--ez-row-h (40px)</code>, 헤더는 42px. 본문 글씨는 <code>--ez-fs-base (14px)</code>.</p>
+    <p class="lead">왜? - 레거시 시스템 가 12px / 28px 였는데 노안 사용자가 많아 키웠습니다.
+      이 값들은 사용자 컨펌이 끝난 값이므로 임의로 줄이지 마세요.</p>
+  </div>
+
+  <div class="dx-section">
+    <h2>4 · 행 클릭 → 수정 모달, + 등록 → 신규 모달</h2>
+    <p class="lead">모든 목록 화면이 따르는 일관 패턴.
+      ConfirmModal 로 확인 후 삭제, 토스트로 결과 알림. 모달 footer 의 삭제 버튼은 좌측,
+      취소/저장은 우측.</p>
+  </div>
+
+  <div class="dx-section">
+    <h2>5 · 서버 한 번 + 클라이언트 페이지네이션</h2>
+    <p class="lead">대부분의 목록은 검색 결과 전체(~수천 건)를 한 번에 가져와
+      클라이언트에서 페이징 (<code>useMemo</code>). 행 수 옵션은 <code>20 / 30 / 50 / 100 / 500</code>.</p>
+  </div>
+
+  <div class="dx-section">
+    <h2>6 · 외부 UI 라이브러리 금지</h2>
+    <div class="dx-rule danger">
+      <span>⛔</span>
+      <span><b>AntD, MUI, shadcn, Bootstrap, Chakra 등 도입 절대 금지.</b>
+        같은 룩앤필을 깨뜨립니다. 자체 컴포넌트 (Grid, DetailModal, ConfirmModal, useToast) 는 이미 충분히
+        모듈화돼 있으니 항상 재사용하세요. 차트만 예외 - Recharts 도입 시 사용자 승인 필수.</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

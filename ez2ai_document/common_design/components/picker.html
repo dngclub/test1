@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>외래키 피커 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">외래키 피커 · 자산/사용자/작업 검색</div><div class="meta">검색 input + 결과 select 콤보 - debounce 300ms</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>자산 피커 (입력 모드)</h2>
+    <div class="eg-form-row">
+      <label>자산<span class="req">*</span></label>
+      <div class="eg-form-control">
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <input type="text" placeholder="자산명/ID 검색" value="공조">
+          <select size="5">
+            <option>공조기 #01 (AHU-001)</option>
+            <option selected>공조기 #02 (AHU-002)</option>
+            <option>공조기 #03 (AHU-003)</option>
+            <option>공조기 #04 (AHU-004)</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <pre class="dx-code">// debounced 검색
+useEffect(() =&gt; {
+  const id = setTimeout(async () =&gt; {
+    const res = await api.get('/api/inspections/assets', { params: { q: search, limit: 30 }})
+    setOpts(res.data.items || [])
+  }, 300)
+  return () =&gt; clearTimeout(id)
+}, [search])</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>읽기 전용 (view 모드)</h2>
+    <div class="eg-form-row">
+      <label>자산</label>
+      <div class="eg-form-control">
+        <div class="eg-form-view">AHU-002 · 공조기 #02</div>
+      </div>
+    </div>
+    <pre class="dx-code">{isView
+  ? &lt;div className="eg-form-view"&gt;{form.asset_id} · {form.asset_name || '-'}&lt;/div&gt;
+  : &lt;Picker ... /&gt;}</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>사용자 피커 (다중 선택)</h2>
+    <div class="eg-form-row">
+      <label>참여자</label>
+      <div class="eg-form-control">
+        <div style="display:flex; flex-wrap:wrap; gap:6px; padding:8px; border:1px solid var(--ez-border); border-radius:6px; min-height:36px; background:var(--ez-card);">
+          <span class="xx-pill is-primary" style="height:24px; padding:0 10px 0 12px; display:inline-flex; align-items:center; gap:4px;">홍길동<button style="background:transparent; border:0; color:inherit; cursor:pointer; padding:0 0 0 4px;">✕</button></span>
+          <span class="xx-pill is-primary" style="height:24px; padding:0 10px 0 12px; display:inline-flex; align-items:center; gap:4px;">김영희<button style="background:transparent; border:0; color:inherit; cursor:pointer; padding:0 0 0 4px;">✕</button></span>
+          <span class="xx-pill is-primary" style="height:24px; padding:0 10px 0 12px; display:inline-flex; align-items:center; gap:4px;">이철수<button style="background:transparent; border:0; color:inherit; cursor:pointer; padding:0 0 0 4px;">✕</button></span>
+          <input type="text" placeholder="검색해서 추가…" style="flex:1; min-width:120px; border:0; outline:0; background:transparent; font-size:14px;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

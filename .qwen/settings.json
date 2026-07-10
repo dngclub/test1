@@ -1,0 +1,33 @@
+{
+  "env": {
+    "QWEN_CUSTOM_API_KEY": "ez2ai_K7mP9qR2sT5vW8xY1aB4cD7eF0gH3jK6nM9pQ2sV5w"
+  },
+  "security": {
+    "auth": {
+      "selectedType": "openai"
+    }
+  },
+  "model": {
+    "name": "Ornith-1.0-35B"
+  },
+  "tools": {
+    "sandbox": false
+  },
+  "modelProviders": {
+    "openai": [
+      {
+        "id": "Ornith-1.0-35B",
+        "name": "Ornith-1.0-35B",
+        "baseUrl": "http://ez2ai.iptime.org:8003/coder/v1",
+        "envKey": "QWEN_CUSTOM_API_KEY",
+        "generationConfig": {
+          "samplingParams": {
+            "max_tokens": 24576
+          },
+          "contextWindowSize": 233472
+        }
+      }
+    ]
+  },
+  "$version": 4
+}

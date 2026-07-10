@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>알림 패널 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">알림 패널 · 통합알림 (선택 컴포넌트)</div><div class="meta">결재 도착, 점검 마감 임박, 작업 지연 등 push</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>헤더 아이콘 + 드롭다운 패널</h2>
+    <div style="position:relative; min-height:380px;">
+      <div style="position:absolute; top:0; right:0; width:360px; background:var(--ez-card); border:1px solid var(--ez-border); border-radius:8px; box-shadow:var(--ez-shadow-lg);">
+        <div style="padding:12px 16px; border-bottom:1px solid var(--ez-border); display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:14px; font-weight:600;">알림 <span class="xx-badge" style="margin-left:6px;">5</span></span>
+          <button class="eg-btn eg-btn-sm eg-btn-ghost">모두 읽음</button>
+        </div>
+        <div style="max-height:300px; overflow:auto;">
+          <div style="padding:12px 16px; border-bottom:1px solid var(--ez-border-soft); display:flex; gap:10px; cursor:pointer;">
+            <span style="width:32px; height:32px; border-radius:50%; background:var(--ez-danger-bg); display:flex; align-items:center; justify-content:center;">🚨</span>
+            <div style="flex:1; min-width:0;">
+              <div style="font-size:13px; font-weight:600; color:var(--ez-text-strong);">위험 작업 신고</div>
+              <div style="font-size:12px; color:var(--ez-text-muted); margin-top:2px;">2 층 외벽 보수 작업 - 추락 위험</div>
+              <div style="font-size:11px; color:var(--ez-text-soft); margin-top:4px;">방금 전 · 김영희</div>
+            </div>
+            <span class="xx-dot is-danger"></span>
+          </div>
+          <div style="padding:12px 16px; border-bottom:1px solid var(--ez-border-soft); display:flex; gap:10px; cursor:pointer;">
+            <span style="width:32px; height:32px; border-radius:50%; background:var(--ez-warning-bg); display:flex; align-items:center; justify-content:center;">📋</span>
+            <div style="flex:1; min-width:0;">
+              <div style="font-size:13px; font-weight:600; color:var(--ez-text-strong);">결재 요청</div>
+              <div style="font-size:12px; color:var(--ez-text-muted); margin-top:2px;">작업허가신청 3 건 결재 대기 중</div>
+              <div style="font-size:11px; color:var(--ez-text-soft); margin-top:4px;">10 분 전 · 시스템</div>
+            </div>
+            <span class="xx-dot is-warning"></span>
+          </div>
+          <div style="padding:12px 16px; border-bottom:1px solid var(--ez-border-soft); display:flex; gap:10px; cursor:pointer;">
+            <span style="width:32px; height:32px; border-radius:50%; background:var(--ez-primary-tint-strong); display:flex; align-items:center; justify-content:center;">🔧</span>
+            <div style="flex:1; min-width:0;">
+              <div style="font-size:13px; font-weight:600; color:var(--ez-text-strong);">작업 완료</div>
+              <div style="font-size:12px; color:var(--ez-text-muted); margin-top:2px;">WO-2026-0245 스프링클러 점검 완료</div>
+              <div style="font-size:11px; color:var(--ez-text-soft); margin-top:4px;">1 시간 전 · 이철수</div>
+            </div>
+          </div>
+          <div style="padding:12px 16px; border-bottom:1px solid var(--ez-border-soft); display:flex; gap:10px; cursor:pointer; opacity:0.7;">
+            <span style="width:32px; height:32px; border-radius:50%; background:var(--ez-card-soft); display:flex; align-items:center; justify-content:center;">📢</span>
+            <div style="flex:1; min-width:0;">
+              <div style="font-size:13px; font-weight:500;">공지: 시스템 점검 안내</div>
+              <div style="font-size:12px; color:var(--ez-text-muted); margin-top:2px;">5/22(목) 22:00 ~ 24:00</div>
+              <div style="font-size:11px; color:var(--ez-text-soft); margin-top:4px;">3 시간 전</div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:10px 14px; border-top:1px solid var(--ez-border); text-align:center;">
+          <a href="#" style="font-size:13px;">전체 알림 보기 →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>알림 유형</h2>
+    <ul style="font-size:14px; line-height:1.8;">
+      <li><b>🚨 위험 신고</b> (danger) - 즉시 대응 필요</li>
+      <li><b>📋 결재 요청</b> (warning) - 본인 결재 대기</li>
+      <li><b>🔧 작업 상태</b> (info) - 본인이 요청자/담당자</li>
+      <li><b>📢 공지</b> (muted) - 전체 안내</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>

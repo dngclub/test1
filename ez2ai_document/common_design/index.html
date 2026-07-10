@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>ez2AI 공통 시스템 — 공통 디자인 시스템 (P00000)</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="tokens/tokens.css">
+  <link rel="stylesheet" href="core.css">
+  <style>
+    html, body { height: 100%; overflow: hidden; }
+    body { display: flex; flex-direction: column; }
+
+    .nav-top {
+      height: 52px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 18px;
+      background: var(--ez-card);
+      border-bottom: 1px solid var(--ez-border);
+      flex-shrink: 0;
+    }
+    .nav-top .brand {
+      display: flex; align-items: baseline; gap: 12px;
+    }
+    .nav-top .brand .name {
+      font-size: var(--ez-fs-lg);
+      font-weight: var(--ez-fw-bold);
+      color: var(--ez-primary);
+      border-left: 4px solid var(--ez-primary);
+      padding-left: 10px;
+      line-height: 1;
+    }
+    .nav-top .brand .sub {
+      font-size: var(--ez-fs-xs);
+      color: var(--ez-text-muted);
+    }
+    .nav-top .actions { display: flex; gap: 8px; align-items: center; }
+
+    .layout { display: flex; flex: 1; min-height: 0; }
+    .sidenav {
+      width: 280px; flex-shrink: 0;
+      background: var(--ez-card);
+      border-right: 1px solid var(--ez-border);
+      overflow-y: auto;
+      padding-bottom: 24px;
+    }
+    .sidenav .search {
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--ez-border-soft);
+      background: var(--ez-card);
+      position: sticky; top: 0; z-index: 1;
+    }
+    .sidenav .search input {
+      width: 100%;
+      height: 30px;
+      padding: 0 10px;
+      border: 1px solid var(--ez-border);
+      border-radius: 6px;
+      background: var(--ez-card);
+      color: var(--ez-text);
+      font-size: var(--ez-fs-sm);
+      outline: none;
+      font-family: inherit;
+    }
+    .sidenav .search input:focus { border-color: var(--ez-primary); box-shadow: 0 0 0 2px var(--ez-primary-focus); }
+    .sidenav h4 {
+      margin: 14px 14px 6px;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--ez-text-muted);
+      font-weight: var(--ez-fw-bold);
+    }
+    .sidenav a.item {
+      display: flex; align-items: center; gap: 8px;
+      padding: 7px 16px;
+      color: var(--ez-text);
+      font-size: var(--ez-fs-sm);
+      text-decoration: none;
+      border-left: 3px solid transparent;
+    }
+    .sidenav a.item:hover { background: var(--ez-row-hover); color: var(--ez-primary); }
+    .sidenav a.item.is-active {
+      background: var(--ez-row-selected);
+      border-left-color: var(--ez-primary);
+      color: var(--ez-primary);
+      font-weight: var(--ez-fw-semibold);
+    }
+    .sidenav a.item .tag {
+      margin-left: auto;
+      font-size: 10px;
+      padding: 1px 6px;
+      border-radius: 3px;
+      background: var(--ez-card-soft);
+      color: var(--ez-text-muted);
+    }
+    .sidenav a.item.is-new .tag { background: var(--ez-success); color: #fff; }
+
+    .frame-wrap {
+      flex: 1; min-width: 0;
+      display: flex; flex-direction: column;
+      background: var(--ez-bg);
+    }
+    .frame-bar {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 14px;
+      border-bottom: 1px solid var(--ez-border);
+      background: var(--ez-card-soft);
+      font-size: var(--ez-fs-xs);
+      color: var(--ez-text-muted);
+    }
+    .frame-bar .path { font-family: var(--ez-font-mono); color: var(--ez-text); flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .frame-bar a {
+      display: inline-flex; align-items: center; gap: 4px;
+      color: var(--ez-primary);
+      text-decoration: none;
+      padding: 4px 8px;
+      border: 1px solid var(--ez-border);
+      border-radius: 4px;
+      background: var(--ez-card);
+      font-size: 11px;
+    }
+    .frame-bar a:hover { background: var(--ez-primary-tint-strong); }
+    iframe#preview {
+      flex: 1; width: 100%;
+      border: 0;
+      background: var(--ez-bg);
+    }
+
+    .home-hero {
+      padding: 28px 32px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .home-hero h1 {
+      font-size: 28px;
+      color: var(--ez-primary);
+      margin: 0 0 6px;
+      letter-spacing: -0.01em;
+    }
+    .home-hero .lead {
+      font-size: var(--ez-fs-md);
+      color: var(--ez-text-muted);
+      margin: 0 0 22px;
+      line-height: 1.6;
+    }
+    .home-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 14px;
+      margin-bottom: 22px;
+    }
+    .home-card {
+      padding: 18px 20px;
+      background: var(--ez-card);
+      border: 1px solid var(--ez-border);
+      border-radius: 8px;
+      box-shadow: var(--ez-shadow-sm);
+    }
+    .home-card .num {
+      font-size: 28px;
+      font-weight: var(--ez-fw-bold);
+      color: var(--ez-primary);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .home-card .lbl { font-size: var(--ez-fs-sm); color: var(--ez-text-muted); }
+  </style>
+</head>
+<body>
+
+<header class="nav-top">
+  <div class="brand">
+    <span class="name">ez2AI Design System</span>
+    <span class="sub">P00000 / 공통시스템 / Brand Navy · Pretendard 14px 기본</span>
+  </div>
+  <div class="actions">
+    <button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button>
+    <a class="eg-btn eg-btn-sm eg-btn-default" href="https://pretendard.org/" target="_blank" rel="noopener">Pretendard</a>
+  </div>
+</header>
+
+<div class="layout">
+  <nav class="sidenav" id="sidenav">
+    <div class="search">
+      <input id="filter" type="search" placeholder="컴포넌트 검색 (예: button, modal, 검색)">
+    </div>
+
+    <h4>시작하기</h4>
+    <a class="item" data-doc data-href="pages/_home.html">📘 홈 / 사용 가이드</a>
+    <a class="item" data-doc data-href="pages/_principles.html">🎯 디자인 원칙</a>
+    <a class="item" data-doc data-href="pages/_checklist.html">✅ 신규 페이지 체크리스트</a>
+
+    <h4>토큰</h4>
+    <a class="item" data-doc data-href="pages/_tokens_colors.html">🎨 색상 토큰</a>
+    <a class="item" data-doc data-href="pages/_tokens_typo.html">🔤 타이포그래피</a>
+    <a class="item" data-doc data-href="pages/_tokens_spacing.html">📐 간격 · 반경 · 그림자</a>
+
+    <h4>기본 컴포넌트</h4>
+    <a class="item" data-doc data-href="components/button.html">버튼 (eg-btn)</a>
+    <a class="item" data-doc data-href="components/input.html">입력 (input)</a>
+    <a class="item" data-doc data-href="components/select.html">셀렉트</a>
+    <a class="item" data-doc data-href="components/textarea.html">텍스트영역</a>
+    <a class="item" data-doc data-href="components/date.html">날짜 · 시간</a>
+    <a class="item" data-doc data-href="components/checkbox.html">체크박스 · 라디오</a>
+    <a class="item" data-doc data-href="components/switch.html">스위치</a>
+    <a class="item" data-doc data-href="components/picker.html">외래키 피커 (자산/사용자)</a>
+
+    <h4>표시 컴포넌트</h4>
+    <a class="item" data-doc data-href="components/badge.html">배지 · 칩 · 도트</a>
+    <a class="item" data-doc data-href="components/tag.html">코드 라벨 칩 (xx-pill)</a>
+    <a class="item" data-doc data-href="components/tabs.html">탭</a>
+    <a class="item" data-doc data-href="components/breadcrumb.html">브레드크럼</a>
+    <a class="item" data-doc data-href="components/tooltip.html">툴팁</a>
+    <a class="item" data-doc data-href="components/spinner.html">스피너 · 프로그레스</a>
+    <a class="item" data-doc data-href="components/empty-state.html">빈 상태</a>
+
+    <h4>데이터 컴포넌트</h4>
+    <a class="item" data-doc data-href="components/grid.html">그리드 (eg-grid)</a>
+    <a class="item" data-doc data-href="components/pagination.html">페이지네이션</a>
+    <a class="item" data-doc data-href="components/search-bar.html">검색바 (xx-search)</a>
+    <a class="item" data-doc data-href="components/tree.html">트리</a>
+
+    <h4>오버레이</h4>
+    <a class="item" data-doc data-href="components/modal.html">상세 모달 (eg-modal)</a>
+    <a class="item" data-doc data-href="components/confirm.html">확인 대화상자</a>
+    <a class="item" data-doc data-href="components/toast.html">토스트 (useToast)</a>
+    <a class="item" data-doc data-href="components/dropdown.html">드롭다운 메뉴</a>
+    <a class="item" data-doc data-href="components/notification.html">알림 패널</a>
+
+    <h4>도메인 특화</h4>
+    <a class="item is-new" data-doc data-href="components/file-upload.html">파일 업로드 / 첨부<span class="tag">NEW</span></a>
+    <a class="item is-new" data-doc data-href="components/signature-pad.html">전자서명 패드<span class="tag">NEW</span></a>
+    <a class="item is-new" data-doc data-href="components/kanban-card.html">칸반 카드<span class="tag">NEW</span></a>
+    <a class="item is-new" data-doc data-href="components/approval-step.html">결재선 스텝<span class="tag">NEW</span></a>
+    <a class="item is-new" data-doc data-href="components/risk-matrix.html">위험성평가 매트릭스<span class="tag">NEW</span></a>
+
+    <h4>화면 패턴 (Samples)</h4>
+    <a class="item" data-doc data-href="samples/layout-shell.html">레이아웃 셸 (사이드+탭+본문)</a>
+    <a class="item" data-doc data-href="samples/login-page.html">로그인</a>
+    <a class="item" data-doc data-href="samples/list-crud.html">목록 + CRUD</a>
+    <a class="item" data-doc data-href="samples/master-detail.html">Master-Detail</a>
+    <a class="item" data-doc data-href="samples/dashboard.html">대시보드 + 차트</a>
+    <a class="item" data-doc data-href="samples/form-edit.html">상세/편집 모달</a>
+    <a class="item is-new" data-doc data-href="samples/approval-flow.html">결재 진행 흐름<span class="tag">NEW</span></a>
+    <a class="item is-new" data-doc data-href="samples/kanban-board.html">칸반 보드<span class="tag">NEW</span></a>
+    <a class="item is-new" data-doc data-href="samples/mobile-inspection.html">모바일 점검<span class="tag">NEW</span></a>
+  </nav>
+
+  <div class="frame-wrap">
+    <div class="frame-bar">
+      <span class="path" id="framePath">홈</span>
+      <a id="openTab" href="#" target="_blank" rel="noopener">↗ 새 탭에서 열기</a>
+    </div>
+    <iframe id="preview" name="preview" src="pages/_home.html" loading="lazy"></iframe>
+  </div>
+</div>
+
+<script src="assets/showcase.js"></script>
+<script>
+  (function () {
+    const frame = document.getElementById('preview');
+    const path = document.getElementById('framePath');
+    const openTab = document.getElementById('openTab');
+    const items = Array.from(document.querySelectorAll('a.item[data-doc]'));
+    const filter = document.getElementById('filter');
+
+    function activate(href) {
+      items.forEach(a => a.classList.toggle('is-active', a.getAttribute('data-href') === href));
+      frame.src = href;
+      path.textContent = href;
+      openTab.href = href;
+      try { localStorage.setItem('ez2ai-design-last', href); } catch (_) {}
+      const url = new URL(location.href);
+      url.hash = '#' + href;
+      history.replaceState(null, '', url.toString());
+    }
+
+    items.forEach(a => {
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        activate(a.getAttribute('data-href'));
+      });
+    });
+
+    // 초기 진입: URL #해시 > localStorage > 기본
+    const initial =
+      (location.hash && location.hash.slice(1)) ||
+      (function(){ try { return localStorage.getItem('ez2ai-design-last'); } catch(_) { return null; }})() ||
+      'pages/_home.html';
+    activate(initial);
+
+    filter.addEventListener('input', () => {
+      const q = filter.value.trim().toLowerCase();
+      items.forEach(a => {
+        const txt = a.textContent.toLowerCase();
+        a.style.display = (!q || txt.includes(q)) ? '' : 'none';
+      });
+    });
+  })();
+</script>
+</body>
+</html>

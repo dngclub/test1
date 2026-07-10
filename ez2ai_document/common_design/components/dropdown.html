@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>드롭다운 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">드롭다운 메뉴 · xx-menu</div><div class="meta">행 액션 ⋮, 사용자 메뉴, 더보기 등</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>기본 (예시 - 항상 펼친 상태)</h2>
+    <div class="dx-row" style="padding:24px 0; min-height:240px; align-items:flex-start;">
+      <div class="xx-menu-wrap">
+        <button class="eg-btn eg-btn-default">⋮ 더보기</button>
+        <div class="xx-menu" style="position:static; margin-top:6px;">
+          <div class="xx-menu-item">✏️ 수정</div>
+          <div class="xx-menu-item">📋 복제</div>
+          <div class="xx-menu-item">📊 엑셀</div>
+          <div class="xx-menu-sep"></div>
+          <div class="xx-menu-item is-danger">🗑 삭제</div>
+        </div>
+      </div>
+      <div class="xx-menu-wrap" style="margin-left:200px;">
+        <button class="eg-btn eg-btn-default">👤 홍길동 ▾</button>
+        <div class="xx-menu" style="position:static; margin-top:6px; min-width:200px;">
+          <div class="xx-menu-item">👤 내 정보</div>
+          <div class="xx-menu-item">🔑 비밀번호 변경</div>
+          <div class="xx-menu-item">🔔 알림 설정</div>
+          <div class="xx-menu-sep"></div>
+          <div class="xx-menu-item is-danger">🚪 로그아웃</div>
+        </div>
+      </div>
+    </div>
+    <pre class="dx-code">const [open, setOpen] = useState(false)
+const ref = useRef(null)
+
+// 외부 클릭 시 닫기
+useEffect(() =&gt; {
+  const fn = (e) =&gt; { if (!ref.current?.contains(e.target)) setOpen(false) }
+  if (open) document.addEventListener('click', fn)
+  return () =&gt; document.removeEventListener('click', fn)
+}, [open])
+
+&lt;div className="xx-menu-wrap" ref={ref}&gt;
+  &lt;button className="eg-btn eg-btn-default" onClick={()=&gt;setOpen(!open)}&gt;⋮ 더보기&lt;/button&gt;
+  {open &amp;&amp;
+    &lt;div className="xx-menu"&gt;
+      &lt;div className="xx-menu-item" onClick={()=&gt;{ edit(); setOpen(false) }}&gt;✏️ 수정&lt;/div&gt;
+      &lt;div className="xx-menu-item is-danger" onClick={...}&gt;🗑 삭제&lt;/div&gt;
+    &lt;/div&gt;}
+&lt;/div&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>가이드</h2>
+    <ul style="font-size:14px; line-height:1.8;">
+      <li>한두개 액션은 직접 버튼으로 노출. 3개 이상이거나 화면이 좁을 때 드롭다운.</li>
+      <li>위험 액션은 <code>is-danger</code> + <code>xx-menu-sep</code> 으로 분리</li>
+      <li>외부 클릭으로 닫히게 useEffect 처리 필수</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>

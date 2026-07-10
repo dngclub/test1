@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>상세 모달 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">상세 모달 · &lt;DetailModal /&gt;</div><div class="meta">shared/DetailModal.tsx - 행 클릭 → 수정, +등록 → 신규</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>표준 (수직 라벨 폼)</h2>
+    <div style="position:relative; background:var(--ez-card-soft); border:1px dashed var(--ez-border); border-radius:8px; padding:30px;">
+      <div class="eg-modal" style="position:static; margin:0 auto; max-width:560px; box-shadow:var(--ez-shadow-md);">
+        <div class="eg-modal-header">
+          <h2>공지사항 수정 - 250</h2>
+          <div class="eg-modal-header-actions">
+            <button class="eg-btn eg-btn-sm eg-btn-default">✏️ 수정</button>
+            <button class="eg-modal-close">✕</button>
+          </div>
+        </div>
+        <div class="eg-modal-body">
+          <div class="eg-form-row">
+            <label>제목<span class="req">*</span></label>
+            <div class="eg-form-control"><input type="text" value="2026 상반기 안전점검 결과 공유"></div>
+          </div>
+          <div class="eg-form-row">
+            <label>등록일</label>
+            <div class="eg-form-control"><div class="eg-form-view">2026-05-19</div></div>
+          </div>
+          <div class="eg-form-row">
+            <label>내용<span class="req">*</span></label>
+            <div class="eg-form-control"><textarea>지난 4 월~5 월 진행된 상반기 정기 안전점검 결과를 공유합니다.
+- 총 점검 건수: 248 건
+- 시정조치 완료: 215 건 (86.7%)
+- 진행 중: 33 건</textarea></div>
+          </div>
+          <div class="eg-form-row">
+            <label>첨부</label>
+            <div class="eg-form-control">
+              <div class="xx-attach-list">
+                <div class="xx-attach-item"><span>📎 점검결과_2026Q1Q2.pdf (2.4 MB)</span><button>✕</button></div>
+                <div class="xx-attach-item"><span>📎 시정조치현황.xlsx (118 KB)</span><button>✕</button></div>
+              </div>
+              <div class="xx-attach-add" style="margin-top:6px;"><label>+ 파일 추가</label></div>
+            </div>
+          </div>
+        </div>
+        <div class="eg-modal-footer">
+          <button class="eg-btn eg-btn-danger left">삭제</button>
+          <button class="eg-btn eg-btn-default">취소</button>
+          <button class="eg-btn eg-btn-primary">저장</button>
+        </div>
+      </div>
+    </div>
+    <pre class="dx-code">import { DetailModal } from '../M000000000/shared'
+
+&lt;DetailModal
+  open={!!form}
+  title={form?.id ? `공지사항 수정 - ${form.id}` : '공지사항 등록'}
+  onClose={() =&gt; setForm(null)}
+  onSave={handleSave}
+  onDelete={form?.id ? handleDelete : undefined}
+&gt;
+  &lt;div className="eg-form-row"&gt;
+    &lt;label&gt;제목&lt;span className="req"&gt;*&lt;/span&gt;&lt;/label&gt;
+    &lt;div className="eg-form-control"&gt;
+      &lt;input value={form.title} onChange={...} /&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  ...
+&lt;/DetailModal&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>2 컬럼 그리드 폼</h2>
+    <p class="lead">필드가 8~12 개일 때 좌우 2 열로 펼침. 긴 텍스트(내용)는 <code>xx-fullwidth</code>.</p>
+    <div style="position:relative; background:var(--ez-card-soft); border:1px dashed var(--ez-border); border-radius:8px; padding:30px;">
+      <div class="eg-modal size-lg" style="position:static; margin:0 auto; box-shadow:var(--ez-shadow-md);">
+        <div class="eg-modal-header">
+          <h2>위원회 등록</h2>
+          <button class="eg-modal-close">✕</button>
+        </div>
+        <div class="eg-modal-body">
+          <div class="xx-form-grid">
+            <div class="eg-form-row"><label>위원회명<span class="req">*</span></label><input type="text"></div>
+            <div class="eg-form-row"><label>구분</label><select><option>안전보건위원회</option><option>산업안전보건위원회</option></select></div>
+            <div class="eg-form-row"><label>위원장</label><input type="text"></div>
+            <div class="eg-form-row"><label>간사</label><input type="text"></div>
+            <div class="eg-form-row"><label>설치일자</label><input type="date"></div>
+            <div class="eg-form-row"><label>임기</label><input type="text" placeholder="예: 2 년"></div>
+            <div class="eg-form-row xx-fullwidth"><label>비고</label><textarea></textarea></div>
+          </div>
+        </div>
+        <div class="eg-modal-footer">
+          <button class="eg-btn eg-btn-default">취소</button>
+          <button class="eg-btn eg-btn-primary">저장</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>가이드</h2>
+    <ul style="font-size:14px; line-height:1.8;">
+      <li>제목: 신규는 "○○○ 등록", 수정은 "○○○ 수정 - {id}"</li>
+      <li>라벨 폭 110px 고정, 필수표시 <code>&lt;span className="req"&gt;*&lt;/span&gt;</code></li>
+      <li>footer: 좌측 <b>삭제</b> (danger), 우측 <b>취소</b>(default) → <b>저장</b>(primary)</li>
+      <li>view 모드에서는 input 대신 <code>&lt;div className="eg-form-view"&gt;...&lt;/div&gt;</code></li>
+      <li>모달 크기: 기본 720, 짧은 폼 size-sm(480), 다중 컬럼 size-lg(960)</li>
+    </ul>
+  </div>
+
+</div>
+
+</body>
+</html>

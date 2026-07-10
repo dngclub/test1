@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>색상 토큰 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div>
+    <div class="title">색상 토큰</div>
+    <div class="meta">Layout.css :root + html.dark 정의와 1:1 동일</div>
+  </div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>Primary / Link</h2>
+    <p class="lead">Brand Navy. h1, 그리드 헤더 글자, primary 버튼/페이저 active, focus border.</p>
+    <div class="dx-grid">
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-primary)"></div><div class="label"><b>--ez-primary</b>#003087</div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-primary-hover)"></div><div class="label"><b>--ez-primary-hover</b>#002468</div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-primary-tint)"></div><div class="label"><b>--ez-primary-tint</b>#eff3f8 (그리드헤더 배경)</div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-primary-tint-strong)"></div><div class="label"><b>--ez-primary-tint-strong</b>#eef2ff (페이저 hover)</div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-link); color:#fff;"></div><div class="label"><b>--ez-link</b>#1e3a8a (a tag, 강조 텍스트)</div></div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>배경 / 표면</h2>
+    <div class="dx-grid">
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-bg); border-bottom:1px solid var(--ez-border)"></div><div class="label"><b>--ez-bg</b>#f6f8fa (shell)</div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-bg-page); border-bottom:1px solid var(--ez-border)"></div><div class="label"><b>--ez-bg-page</b>#f7f8fa (페이지)</div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-card); border-bottom:1px solid var(--ez-border)"></div><div class="label"><b>--ez-card</b>#ffffff (검색바·그리드·모달)</div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-card-soft); border-bottom:1px solid var(--ez-border)"></div><div class="label"><b>--ez-card-soft</b>#f8fafc (toolbar)</div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-row-hover); border-bottom:1px solid var(--ez-border)"></div><div class="label"><b>--ez-row-hover</b>(행 hover)</div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-row-selected); border-bottom:1px solid var(--ez-border)"></div><div class="label"><b>--ez-row-selected</b>(선택 행)</div></div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>텍스트</h2>
+    <div class="dx-grid">
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-text-strong)"></div><div class="label"><b>--ez-text-strong</b>#0f172a (제목)</div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-text)"></div><div class="label"><b>--ez-text</b>#1f2937 (본문)</div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-text-muted)"></div><div class="label"><b>--ez-text-muted</b>#6b7280 (보조)</div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-text-soft)"></div><div class="label"><b>--ez-text-soft</b>#94a3b8 (placeholder, 빈상태)</div></div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>경계선</h2>
+    <div class="dx-grid">
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-border)"></div><div class="label"><b>--ez-border</b>#e5e7eb</div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-border-soft)"></div><div class="label"><b>--ez-border-soft</b>#f1f3f5 (행 구분)</div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-border-dashed)"></div><div class="label"><b>--ez-border-dashed</b>#cbd5e1 (점선용)</div></div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>상태색 4 종</h2>
+    <div class="dx-grid">
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-success)"></div><div class="label"><b>--ez-success</b>#16a34a</div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-warning)"></div><div class="label"><b>--ez-warning</b>#d97706</div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-danger)"></div><div class="label"><b>--ez-danger</b>#dc2626</div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-info)"></div><div class="label"><b>--ez-info</b>#2563eb</div></div>
+    </div>
+
+    <h3 style="margin-top:18px;">상태색의 톤 (배경/테두리)</h3>
+    <div class="dx-grid">
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-success-bg); border-bottom:1px solid var(--ez-success-border)"></div><div class="label"><b>success bg/border</b></div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-warning-bg); border-bottom:1px solid var(--ez-warning-border)"></div><div class="label"><b>warning bg/border</b></div></div>
+      <div class="dx-swatch"><div class="box" style="background:var(--ez-danger-bg); border-bottom:1px solid var(--ez-danger-border)"></div><div class="label"><b>danger bg/border</b></div></div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>오버레이 / 그림자</h2>
+    <div class="dx-row">
+      <div style="width:200px; height:80px; background:var(--ez-card); box-shadow:var(--ez-shadow-sm); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:13px;">shadow-sm</div>
+      <div style="width:200px; height:80px; background:var(--ez-card); box-shadow:var(--ez-shadow-md); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:13px;">shadow-md</div>
+      <div style="width:200px; height:80px; background:var(--ez-card); box-shadow:var(--ez-shadow-lg); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:13px;">shadow-lg</div>
+      <div style="width:200px; height:80px; background:var(--ez-overlay); border-radius:6px; display:flex; align-items:center; justify-content:center; color:#fff; font-size:13px;">overlay</div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>칸반 보드 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">샘플 · 칸반 보드 (작업오더 진행)</div><div class="meta">상태별 컬럼 + 카드 드래그</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="xx-page" style="padding:18px 22px;">
+
+  <div class="xx-header">
+    <h1>작업오더 칸반</h1>
+    <div class="xx-header-actions">
+      <button class="eg-btn eg-btn-default">목록 보기</button>
+      <button class="eg-btn eg-btn-primary">+ 등록</button>
+    </div>
+  </div>
+
+  <div class="xx-search">
+    <div class="xx-field"><label>담당자</label><input type="text" placeholder="이름"></div>
+    <div class="xx-field"><label>유형</label>
+      <select><option>전체</option><option>시설</option><option>전기</option><option>방재</option></select>
+    </div>
+    <div class="xx-search-actions">
+      <button class="eg-btn eg-btn-primary">🔍 검색</button>
+    </div>
+  </div>
+
+  <div class="xx-kanban">
+    <div class="xx-kanban-col">
+      <div class="xx-kanban-col-head"><span>📥 작업요청</span><span class="xx-pill is-info">20</span></div>
+      <div class="xx-kanban-col-body">
+        <div class="xx-kanban-card">
+          <div class="title">에어컨 필터 교체</div>
+          <div class="meta"><span>WO-251</span><span>👤 홍길동</span></div>
+          <div style="margin-top:6px;"><span class="xx-pill">보통</span></div>
+        </div>
+        <div class="xx-kanban-card" style="border-left-color:var(--ez-danger);">
+          <div class="title">화재경보기 오작동</div>
+          <div class="meta"><span>WO-250</span><span>👤 김영희</span></div>
+          <div style="margin-top:6px;"><span class="xx-pill is-danger">매우중요</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="xx-kanban-col">
+      <div class="xx-kanban-col-head"><span>📋 작업접수</span><span class="xx-pill is-info">29</span></div>
+      <div class="xx-kanban-col-body">
+        <div class="xx-kanban-card" style="border-left-color:var(--ez-warning);">
+          <div class="title">스프링클러 압력 점검</div>
+          <div class="meta"><span>WO-245</span><span>👤 박지수</span></div>
+          <div style="margin-top:6px;"><span class="xx-pill is-warning">중요</span></div>
+        </div>
+        <div class="xx-kanban-card">
+          <div class="title">외부 조명 LED 교체</div>
+          <div class="meta"><span>WO-246</span><span>👤 이철수</span></div>
+          <div style="margin-top:6px;"><span class="xx-pill">보통</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="xx-kanban-col">
+      <div class="xx-kanban-col-head"><span>🔧 작업시작</span><span class="xx-pill is-warning">37</span></div>
+      <div class="xx-kanban-col-body">
+        <div class="xx-kanban-card" style="border-left-color:var(--ez-danger);">
+          <div class="title">비상발전기 누유 점검</div>
+          <div class="meta"><span>WO-247</span><span>👤 김영희</span></div>
+          <div style="margin-top:6px;"><span class="xx-pill is-danger">매우중요</span></div>
+        </div>
+        <div class="xx-kanban-card">
+          <div class="title">전기실 환기팬 청소</div>
+          <div class="meta"><span>WO-241</span><span>👤 이철수</span></div>
+          <div style="margin-top:6px;"><span class="xx-pill">보통</span></div>
+        </div>
+        <div class="xx-kanban-card" style="border-left-color:var(--ez-warning);">
+          <div class="title">방화셔터 점검</div>
+          <div class="meta"><span>WO-242</span><span>👤 김영희</span></div>
+          <div style="margin-top:6px;"><span class="xx-pill is-warning">중요</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="xx-kanban-col">
+      <div class="xx-kanban-col-head"><span>✅ 작업완료</span><span class="xx-pill is-success">186</span></div>
+      <div class="xx-kanban-col-body">
+        <div class="xx-kanban-card" style="border-left-color:var(--ez-success);">
+          <div class="title">공조기 #02 정기점검</div>
+          <div class="meta"><span>WO-248</span><span>👤 홍길동</span></div>
+          <div style="margin-top:6px;"><span class="xx-pill is-success">완료</span></div>
+        </div>
+        <div class="xx-kanban-card" style="border-left-color:var(--ez-success);">
+          <div class="title">옥상 안전난간 보수</div>
+          <div class="meta"><span>WO-244</span><span>👤 최민호</span></div>
+          <div style="margin-top:6px;"><span class="xx-pill is-success">완료</span></div>
+        </div>
+        <div class="xx-kanban-card" style="border-left-color:var(--ez-success);">
+          <div class="title">주차장 침수 대응</div>
+          <div class="meta"><span>WO-243</span><span>👤 홍길동</span></div>
+          <div style="margin-top:6px;"><span class="xx-pill is-success">완료</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="xx-kanban-col">
+      <div class="xx-kanban-col-head"><span>⚠️ 작업지연</span><span class="xx-pill is-danger">12</span></div>
+      <div class="xx-kanban-col-body">
+        <div class="xx-kanban-card" style="border-left-color:var(--ez-danger);">
+          <div class="title">전기 패널 누전 신호</div>
+          <div class="meta"><span>WO-220</span><span>👤 이철수</span></div>
+          <div style="margin-top:6px;"><span class="xx-pill is-danger">지연 3일</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>셀렉트 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">셀렉트 · select</div><div class="meta">네이티브 select 사용 - 별도 라이브러리 금지</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+
+  <div class="dx-section">
+    <h2>기본</h2>
+    <div class="dx-row">
+      <select class="xx-select" style="max-width:220px;">
+        <option>전체</option>
+        <option>점검조치</option>
+        <option>작업오더</option>
+        <option>VOC</option>
+        <option>알람</option>
+      </select>
+      <select class="xx-select" style="max-width:220px;" disabled>
+        <option>비활성</option>
+      </select>
+    </div>
+    <pre class="dx-code">&lt;select className="xx-select" value={form.work_type_cd} onChange={...}&gt;
+  &lt;option value=""&gt;전체&lt;/option&gt;
+  {WORK_TYPE_OPTIONS.map(o =&gt;
+    &lt;option key={o.cd} value={o.cd}&gt;{o.label}&lt;/option&gt;)}
+&lt;/select&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>검색바 안에서</h2>
+    <div class="xx-search">
+      <div class="xx-field">
+        <label>상태</label>
+        <select>
+          <option>전체</option><option>작업요청</option><option>작업접수</option>
+          <option>작업시작</option><option>작업완료</option><option>작업지연</option>
+        </select>
+      </div>
+      <div class="xx-field">
+        <label>중요도</label>
+        <select>
+          <option>전체</option><option>매우중요</option><option>중요</option><option>보통</option>
+        </select>
+      </div>
+      <div class="xx-search-actions">
+        <button class="eg-btn eg-btn-primary">🔍 검색</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="dx-section">
+    <h2>그리드 헤더 - 페이지 사이즈 (eg-page-size)</h2>
+    <div class="eg-grid-head">
+      <div class="eg-grid-head-left">전체 248건</div>
+      <div class="eg-grid-head-right">
+        <div class="eg-page-size">
+          <span>행 수</span>
+          <select>
+            <option>20</option><option>30</option><option selected>50</option>
+            <option>100</option><option>500</option>
+          </select>
+        </div>
+        <button class="eg-btn eg-btn-sm eg-btn-default">📊 엑셀</button>
+      </div>
+    </div>
+    <pre class="dx-code">&lt;div className="eg-page-size"&gt;
+  &lt;span&gt;행 수&lt;/span&gt;
+  &lt;select value={pageSize} onChange={(e)=&gt;setPageSize(Number(e.target.value))}&gt;
+    {[20,30,50,100,500].map(n =&gt; &lt;option key={n} value={n}&gt;{n}&lt;/option&gt;)}
+  &lt;/select&gt;
+&lt;/div&gt;</pre>
+  </div>
+
+  <div class="dx-section">
+    <h2>참고: 코드↔라벨 매핑 (co_common_code)</h2>
+    <p class="lead">백엔드에서 <code>LEFT JOIN co_common_code</code> 로 라벨까지 반환받고,
+      프론트는 옵션 배열을 정의해서 두 가지 모두 사용합니다.</p>
+    <pre class="dx-code">const STATUS_OPTIONS = [
+  { cd: '1', label: '작업요청' }, { cd: '2', label: '작업접수' },
+  { cd: '3', label: '작업시작' }, { cd: '4', label: '작업완료' },
+  { cd: '5', label: '작업지연' }, { cd: '6', label: '작업이관' },
+]
+const statusLabel = (cd) =&gt; STATUS_OPTIONS.find(o =&gt; o.cd === cd)?.label || cd || '-'</pre>
+  </div>
+
+</div>
+
+</body>
+</html>

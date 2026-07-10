@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <title>텍스트영역 — ez2AI Design</title>
+  <link rel="stylesheet" href="../tokens/tokens.css">
+  <link rel="stylesheet" href="../core.css">
+  <link rel="stylesheet" href="../assets/showcase.css">
+  <script defer src="../assets/showcase.js"></script>
+</head>
+<body class="dx-page">
+
+<div class="dx-topbar">
+  <div><div class="title">텍스트영역 · textarea</div><div class="meta">min-height 80px, vertical resize</div></div>
+  <div class="actions"><button class="dx-theme-toggle" data-theme-toggle>☽ Dark</button></div>
+</div>
+
+<div class="dx-body">
+  <div class="dx-section">
+    <h2>기본</h2>
+    <textarea class="xx-textarea" placeholder="상세 설명을 입력하세요" style="max-width:520px;"></textarea>
+    <p class="lead" style="margin-top:10px;">모달 폼에서는 <code>eg-form-row textarea</code> 가 적용되어 13px / min-height 100px.</p>
+  </div>
+
+  <div class="dx-section">
+    <h2>모달 폼 내부</h2>
+    <div class="eg-form-row">
+      <label>비고</label>
+      <div class="eg-form-control">
+        <textarea>점검 항목 1 - 정상
+점검 항목 2 - 이상 발견, 보수 필요
+점검 항목 3 - 정상</textarea>
+      </div>
+    </div>
+    <pre class="dx-code">&lt;div className="eg-form-row"&gt;
+  &lt;label&gt;비고&lt;/label&gt;
+  &lt;div className="eg-form-control"&gt;
+    &lt;textarea value={form.remark || ''} onChange={...} /&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+  </div>
+</div>
+
+</body>
+</html>
